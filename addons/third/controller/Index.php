@@ -64,7 +64,7 @@ class Index extends Controller
 
         //监听注册登录注销的事件
         Hook::add('user_login_successed', function ($user) use ($auth) {
-            $expire = input('post.keeplogin') ? 30 * 86400 : 7000;
+            $expire = input('post.keeplogin') ? 30 * 86400 : 0;
             Cookie::set('uid', $user->id, $expire);
             Cookie::set('token', $auth->getToken(), $expire);
         });
@@ -79,7 +79,7 @@ class Index extends Controller
         $platform = $this->request->param('platform');
 
         // 成功后返回会员中心
-        $url = url('index/user/index');
+        $url = url('index/index/index');
 
         // 授权成功后的回调
         $result = $this->app->{$platform}->getUserInfo();

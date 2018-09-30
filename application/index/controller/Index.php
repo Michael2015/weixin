@@ -8,7 +8,7 @@ use app\common\library\Token;
 class Index extends Frontend
 {
 
-    protected $noNeedLogin = '';
+    protected $noNeedLogin = '*';
     protected $noNeedRight = '*';
     protected $layout = '';
 
@@ -19,6 +19,23 @@ class Index extends Frontend
 
     public function index()
     {
+        $user_id = $this->auth->getUser()->id;
+        //获取该用户余额
+
+
+
+        //获取用户今天阅读文章总阅读量
+
+
+        //获取用户今天有效阅读数
+
+
+        //获取用户阅读文章跳转链接
+
+        //获取
+
+
+
         return $this->view->fetch();
     }
 

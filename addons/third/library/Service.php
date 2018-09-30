@@ -41,12 +41,14 @@ class Service
 
         $auth->keeptime($keeptime);
         $third = Third::get(['platform' => $platform, 'openid' => $params['openid']]);
+        //已经注册过的用户
         if ($third) {
             $user = User::get($third['user_id']);
             if (!$user) {
                 return FALSE;
             }
             $third->save($values);
+            //插入user_token表
             return $auth->direct($user->id);
         } else {
             // 先随机一个用户名,随后再变更为u+数字id
@@ -67,6 +69,9 @@ class Service
                 if (isset($params['userinfo']['avatar']))
                     $fields['avatar'] = $params['userinfo']['avatar'];
 
+                //初始用户赠送0.5元  相当于50积分  1:100
+                $fields['score'] = 50;
+
                 // 更新会员资料
                 $user = User::get($user->id);
                 $user->save($fields);
@@ -80,7 +85,7 @@ class Service
                 $auth->logout();
                 return FALSE;
             }
-
+            //插入user_token表
             // 写入登录Cookies和Token
             return $auth->direct($user->id);
         }
