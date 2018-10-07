@@ -50,7 +50,7 @@
 }
 .page-header h1>small
 {
-   color: #eee;
+ color: #eee;
 }
 .list-group-item>.badge
 {
@@ -151,21 +151,21 @@ footer .btn
 
 <div class="jumbotron jumbotron2">
     <div class="container">
-       <div class="list-group">
-          <div class="alert alert-warning alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
-              <h4><strong>赚钱技巧</strong><span class="glyphicon glyphicon-star-empty" style="float: right;"></span><span style="float: right;" onclick="window.location.href='https://mp.weixin.qq.com/s/oUYlhpMMznaJs4gAzLwHUA';">收藏网址</span><span class="glyphicon glyphicon-star-empty" style="float: right;"></h4>
-                  <h6>1.新用户首次注册奖励0.5元</h6>
-                  <h6>2.每一次阅读单价0.03元，满1元即可提现；</h6>
-                  <h6>3.阅读时间间隔在5秒及以上，否则视为无效阅读；</h6>
-                  <h6>4.进入文章后，可以按微信底部返回按钮返回；</h6>
-                  <h6>5.任何问题，欢迎咨询微信客服shan47636；</h6>
-                  <img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fvzmiw6a50j3076076gm2.jpg">
-              </div>
+     <div class="list-group">
+      <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+          <h4><strong>赚钱技巧</strong><span class="glyphicon glyphicon-star-empty" style="float: right;"></span><span style="float: right;" onclick="window.location.href='https://mp.weixin.qq.com/s/oUYlhpMMznaJs4gAzLwHUA';">收藏网址</span><span class="glyphicon glyphicon-star-empty" style="float: right;"></h4>
+              <h6>1.新用户首次注册奖励0.5元</h6>
+              <h6>2.每一次阅读单价0.03元，满1元即可提现；</h6>
+              <h6>3.阅读时间间隔在5秒及以上，否则视为无效阅读；</h6>
+              <h6>4.进入文章后，可以按微信底部返回按钮返回；</h6>
+              <h6>5.任何问题，欢迎咨询微信客服shan47636；</h6>
+              <img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fvzmiw6a50j3076076gm2.jpg">
           </div>
       </div>
   </div>
-  <footer>
+</div>
+<footer>
     <button type="button" class="btn btn-primary btn-lg btn-block"> 我 要 提 现 </button>
 </footer>
 <div class="alert alert-warning text-center" id="alert-status-4" role="alert" style="display:none;position: fixed;top: 0;width: 100%;">
@@ -185,10 +185,10 @@ footer .btn
             sec = 5;
             var timer = setInterval(function(){
 
-               $('#alert-status-1>span').html(sec);
-               sec = sec-1;
-               if( sec === -1)
-               {
+             $('#alert-status-1>span').html(sec);
+             sec = sec-1;
+             if( sec === -1)
+             {
                 window.clearInterval(timer); 
                 getUrl();
             }
@@ -216,19 +216,17 @@ footer .btn
 
 //微信后台刷新
 <script type="text/javascript">
-    $(function() {
-        pushHistory();
-    });
-    function pushHistory() {
-        window.addEventListener("popstate", function(e) {
-            self.location.reload();
-        }, false);
-        var state = {
-            title : "",
-            url : "#"
-        };
-        window.history.replaceState(state, "", "#");
-    };
+ $(function () { 
+    var isPageHide = false; 
+    window.addEventListener('pageshow', function () { 
+        if (isPageHide) { 
+            window.location.reload(); 
+        } 
+    }); 
+    window.addEventListener('pagehide', function () { 
+        isPageHide = true; 
+    }); 
+})
 </script>
 </body>
 </html>
