@@ -214,13 +214,21 @@ footer .btn
     }
 </script>
 
+//微信后台刷新
 <script type="text/javascript">
-    $(document).ready(function(){
-    var pagNum=performance.navigation.type;
-     if(pagNum==2){
-         document.location.reload();
-    }
- });
+    $(function() {
+        pushHistory();
+    });
+    function pushHistory() {
+        window.addEventListener("popstate", function(e) {
+            self.location.reload();
+        }, false);
+        var state = {
+            title : "",
+            url : "#"
+        };
+        window.history.replaceState(state, "", "#");
+    };
 </script>
 </body>
 </html>
