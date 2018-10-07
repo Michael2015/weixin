@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:93:"/Users/yangmingzhao/Applications/WWW/weixin/public/../application/index/view/index/index.html";i:1538892369;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,21 +113,21 @@ footer .btn
         <div class="row">
           <div class="col-xs-4 col-sm-4">
             <div class="page-header">
-              <h1><small>会员号 {$user_id}</small></h1>
+              <h1><small>会员号 <?php echo $user_id; ?></small></h1>
           </div>
       </div>
       <div class="col-xs-8 col-sm-4">
         <ul class="list-group">
           <li class="list-group-item">
-            <span class="badge">{$all_article_count}/次</span>
+            <span class="badge"><?php echo $all_article_count; ?>/次</span>
             今日阅读量
         </li>
         <li class="list-group-item">
-            <span class="badge">{$valid_article_count}/次</span>
+            <span class="badge"><?php echo $valid_article_count; ?>/次</span>
             有效阅读量
         </li>
         <li class="list-group-item">
-            <span class="badge">{$score}/元</span>
+            <span class="badge"><?php echo $score; ?>/元</span>
             账户总余额
         </li>
     </ul>
@@ -136,16 +137,16 @@ footer .btn
 
 <div class="jumbotron">
     <div class="container">
-        {if ( $alert_status === 0)} 
+        <?php if(( $alert_status === 0)): ?> 
         <button type="button" class="btn btn-primary" onclick="return getUrl();">马 上 阅 读</button>
-        {elseif $alert_status == 1 /}
+        <?php elseif($alert_status == 1): ?>
         <div id="alert-status-1"><span>5</span>秒后自动进入下一篇文章</div>
-        {else /} 
+        <?php else: ?> 
         <button type="button" class="btn btn-primary" onclick="return getUrl();">马 上 阅 读</button>
         <div class="alert alert-warning text-center" id="alert-status-2" role="alert" style="position: fixed;top: 0;width: 100%;">
             阅读越多，赚得越多
         </div>
-        {/if}
+        <?php endif; ?>
     </div>
 </div>
 
@@ -200,7 +201,7 @@ footer .btn
 
     function getUrl()
     {
-        $.ajax({ url: "{:url('api/index/log',['token'=>$token])}", context: document.body, success: function(msg){
+        $.ajax({ url: "<?php echo url('api/index/log',['token'=>$token]); ?>", context: document.body, success: function(msg){
             if(msg.code === 1)
             {
                 window.location.href = msg.data.article_url;
