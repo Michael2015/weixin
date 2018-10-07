@@ -16,6 +16,7 @@ class Index extends Controller
 
     protected $app = null;
     protected $options = [];
+    //protected $noNeedLogin = '';
 
     public function _initialize()
     {
@@ -50,7 +51,7 @@ class Index extends Controller
         if (!$this->app->{$platform}) {
             $this->error(__('Invalid parameters'));
         }
-        // 跳转到登录授权页面
+        // 跳转到登录授权页
         $this->redirect($this->app->{$platform}->getAuthorizeUrl());
         return;
     }
@@ -92,7 +93,8 @@ class Index extends Controller
                     $uc = new \addons\ucenter\library\client\Client();
                     $synchtml = $uc->uc_user_synlogin($this->auth->id);
                 }
-                $this->success(__('Logged in successful') . $synchtml, $url);
+                $this->redirect($url);
+                //$this->success(__('Logged in successful') . $synchtml, $url);
             }
         }
         $this->error(__('Operation failed'), $url);
