@@ -37,7 +37,7 @@ class Index extends Frontend
             if( $all_article_count > 0 )
             {
                 $log_info =  Db::name('read_article_log_'.date('Ymd'))->field('id,createtime,is_disable')->where(['user_id'=>$user_id])->order('createtime','desc')->find();
-                if($log_info &&  $log_info['is_disable'] === 0 && strtotime($log_info['createtime']) <= strtotime('-5 seconds'))
+                if($log_info &&  $log_info['is_disable'] === 0 && strtotime($log_info['createtime']) <= strtotime('-5 seconds'),time())
                 {
                  $alert_status =  1;
                   //$last_one  = Db::name('read_article_log_'.date('Ymd'))->where(['user_id'=>$user_id])->order('createtime','desc')->field('id')->limit(1)->find();
