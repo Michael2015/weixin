@@ -60,7 +60,7 @@ class Index extends Frontend
     }
     //\think\Cookie::get('token');
     $token = \think\Cookie::get('token');
-    $score = $this->auth->getUser()->score
+    $score = $this->auth->getUser()->score;
     $this->assign('token',$token); 
     //会员ID
     
