@@ -17146,3 +17146,342 @@
   'auto_start' => true,
 )
 [ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-07T16:50:28+08:00 ] 127.0.0.1 GET /
+[ info ] www.weixin.local/ [运行时间：0.036850s][吞吐率：27.14req/s] [内存消耗：3,600.53kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000080s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001420s ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.weixin.local',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.weixin.local/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1538661385; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1538670775; PHPSESSID=efsmplpd35splpc6m4fn2hiv60',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/public/../application/index/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001904s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)[/Users/yangmingzhao/Applications/WWW/weixin/thinkphp/library/think/db/Connection.php:295]
+---------------------------------------------------------------
+[ 2018-10-07T17:20:53+08:00 ] 127.0.0.1 GET /
+[ info ] www.weixin.local/ [运行时间：0.032502s][吞吐率：30.77req/s] [内存消耗：3,728.45kb] [文件加载：73]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000038s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001460s ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.weixin.local',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.weixin.local/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1538661385; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1538670775; PHPSESSID=efsmplpd35splpc6m4fn2hiv60',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/public/../application/index/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001394s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /Users/yangmingzhao/Applications/WWW/weixin/public/../application/common/view/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000564s ] mysql:host=127.0.0.1;port=3306;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'd8aa945b8448d8a41ab99c04b04f9e522294b47c' LIMIT 1 [ RunTime:0.000385s ]
+---------------------------------------------------------------
+[ 2018-10-07T17:20:56+08:00 ] 127.0.0.1 GET /third/connect/wechat.html
+[ info ] www.weixin.local/third/connect/wechat.html [运行时间：0.031092s][吞吐率：32.16req/s] [内存消耗：3,198.05kb] [文件加载：70]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000059s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001670s ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\addons\\Route',
+    1 => 'execute',
+  ),
+  'var' => 
+  array (
+    'addon' => 'third',
+    'controller' => 'index',
+    'action' => 'connect',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.weixin.local',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.weixin.local/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1538661385; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1538670775; PHPSESSID=efsmplpd35splpc6m4fn2hiv60',
+)
+[ info ] [ PARAM ] array (
+  'platform' => 'wechat',
+)
+[ info ] [ RUN ] think\addons\Route->execute[ /Users/yangmingzhao/Applications/WWW/weixin/vendor/karsonzhang/fastadmin-addons/src/addons/Route.php ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/public/../application/common/lang/zh-cn/addon.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @addon_begin [ RunTime:0.001899s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-07T17:49:36+08:00 ] 127.0.0.1 GET /third/connect/wechat.html
+[ info ] www.weixin.local/third/connect/wechat.html [运行时间：0.045032s][吞吐率：22.21req/s] [内存消耗：3,198.05kb] [文件加载：70]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000037s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007129s ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\addons\\Route',
+    1 => 'execute',
+  ),
+  'var' => 
+  array (
+    'addon' => 'third',
+    'controller' => 'index',
+    'action' => 'connect',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.weixin.local',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.weixin.local/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1538661385; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1538670775; PHPSESSID=efsmplpd35splpc6m4fn2hiv60',
+)
+[ info ] [ PARAM ] array (
+  'platform' => 'wechat',
+)
+[ info ] [ RUN ] think\addons\Route->execute[ /Users/yangmingzhao/Applications/WWW/weixin/vendor/karsonzhang/fastadmin-addons/src/addons/Route.php ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/public/../application/common/lang/zh-cn/addon.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @addon_begin [ RunTime:0.001776s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-07T17:50:03+08:00 ] 127.0.0.1 GET /
+[ info ] www.weixin.local/ [运行时间：0.036839s][吞吐率：27.15req/s] [内存消耗：3,681.86kb] [文件加载：72]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000036s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003262s ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.weixin.local',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.weixin.local/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1538661385; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1538670775; PHPSESSID=efsmplpd35splpc6m4fn2hiv60',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/public/../application/index/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001750s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000544s ] mysql:host=127.0.0.1;port=3306;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.000717s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'd8aa945b8448d8a41ab99c04b04f9e522294b47c' LIMIT 1 [ RunTime:0.000392s ]
+---------------------------------------------------------------
+[ 2018-10-07T17:50:03+08:00 ] 127.0.0.1 GET /third/connect/wechat.html
+[ info ] www.weixin.local/third/connect/wechat.html [运行时间：0.026574s][吞吐率：37.63req/s] [内存消耗：3,198.63kb] [文件加载：70]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000042s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001328s ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\addons\\Route',
+    1 => 'execute',
+  ),
+  'var' => 
+  array (
+    'addon' => 'third',
+    'controller' => 'index',
+    'action' => 'connect',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.weixin.local',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.weixin.local/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1538661385; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1538670775; PHPSESSID=efsmplpd35splpc6m4fn2hiv60',
+)
+[ info ] [ PARAM ] array (
+  'platform' => 'wechat',
+)
+[ info ] [ RUN ] think\addons\Route->execute[ /Users/yangmingzhao/Applications/WWW/weixin/vendor/karsonzhang/fastadmin-addons/src/addons/Route.php ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/public/../application/common/lang/zh-cn/addon.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @addon_begin [ RunTime:0.001484s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-07T17:50:10+08:00 ] 127.0.0.1 GET /
+[ info ] www.weixin.local/ [运行时间：0.035148s][吞吐率：28.45req/s] [内存消耗：3,681.38kb] [文件加载：72]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000041s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001517s ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.weixin.local',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1538661385; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1538670775; PHPSESSID=efsmplpd35splpc6m4fn2hiv60',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/public/../application/index/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002283s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000543s ] mysql:host=127.0.0.1;port=3306;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'd8aa945b8448d8a41ab99c04b04f9e522294b47c' LIMIT 1 [ RunTime:0.000525s ]
+---------------------------------------------------------------
+[ 2018-10-07T17:50:10+08:00 ] 127.0.0.1 GET /third/connect/wechat.html
+[ info ] www.weixin.local/third/connect/wechat.html [运行时间：0.028984s][吞吐率：34.50req/s] [内存消耗：3,197.65kb] [文件加载：70]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000053s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001236s ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\addons\\Route',
+    1 => 'execute',
+  ),
+  'var' => 
+  array (
+    'addon' => 'third',
+    'controller' => 'index',
+    'action' => 'connect',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.weixin.local',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1538661385; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1538670775; PHPSESSID=efsmplpd35splpc6m4fn2hiv60',
+)
+[ info ] [ PARAM ] array (
+  'platform' => 'wechat',
+)
+[ info ] [ RUN ] think\addons\Route->execute[ /Users/yangmingzhao/Applications/WWW/weixin/vendor/karsonzhang/fastadmin-addons/src/addons/Route.php ]
+[ info ] [ LANG ] /Users/yangmingzhao/Applications/WWW/weixin/public/../application/common/lang/zh-cn/addon.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @addon_begin [ RunTime:0.001337s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
