@@ -64,8 +64,8 @@ class Frontend extends Controller
             $this->auth->init($token);
             //检测是否登录
             if (!$this->auth->isLogin()) {
-                //直接跳转到微信登录
-                $this->error(__('Please login first'), addon_url('third/index/connect',[':platform'=>'wechat']));
+                //直接跳转到微信登
+                $this->error(__('Please login first'),addon_url('third/index/connect',[':platform'=>'wechat']));
             }
             // 判断是否需要验证权限
             if (!$this->auth->match($this->noNeedRight)) {

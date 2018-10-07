@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:99:"/Users/yangmingzhao/Applications/WWW/weixin/public/../application/common/view/tpl/dispatch_jump.tpl";i:1538646343;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"/usr/share/nginx/html/weixin/public/../application/common/view/tpl/dispatch_jump.tpl";i:1538893163;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
