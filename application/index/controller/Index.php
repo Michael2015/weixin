@@ -39,12 +39,12 @@ class Index extends Frontend
                 $log_info =  Db::name('read_article_log_'.date('Ymd'))->field('id,createtime,is_disable')->where(['user_id'=>$user_id])->order('createtime','desc')->find();
                 if($log_info &&  $log_info['is_disable'] === 0 && strtotime($log_info['createtime']) <= strtotime('-5 seconds',time()))
                 {
-                 $alert_status =  1;
+                   $alert_status =  1;
                   //$last_one  = Db::name('read_article_log_'.date('Ymd'))->where(['user_id'=>$user_id])->order('createtime','desc')->field('id')->limit(1)->find();
                  //将文章更新为有效
-                 $result = Db::name('read_article_log_'.date('Ymd'))->where(['id'=>$log_info['id'],'is_valid'=>0])->update(['is_valid'=>1]);
-                 if($result)
-                 {
+                   $result = Db::name('read_article_log_'.date('Ymd'))->where(['id'=>$log_info['id'],'is_valid'=>0])->update(['is_valid'=>1]);
+                   if($result)
+                   {
                       //将对应的用户积分更新
                     Db::name('user')->where(['id'=>$user_id])->inc('score',3)->update();
                 }
@@ -53,19 +53,20 @@ class Index extends Frontend
             {
                 $alert_status =  2;
             }
-             Db::name('read_article_log_'.date('Ymd'))->where(['id'=>$log_info['id'],'is_disable'=>0])->update(['is_disable'=>1]);
+            Db::name('read_article_log_'.date('Ymd'))->where(['id'=>$log_info['id'],'is_disable'=>0])->update(['is_disable'=>1]);
         }
             //获取用户今天有效阅读数
         $valid_article_count =  Db::name('read_article_log_'.date('Ymd'))->where(['user_id'=>$user_id,'is_valid'=>1])->count();
     }
     //\think\Cookie::get('token');
     $token = \think\Cookie::get('token');
+    $score = $this->auth->getUser()->score
     $this->assign('token',$token); 
     //会员ID
-    //$this->auth->getUser()->score
+    
     $this->assign('user_id',$user_id); 
         //获取该用户余额
-    $this->assign('score',number_format(50/100,2)); 
+    $this->assign('score',number_format($score/100,2)); 
     $this->assign('all_article_count',$all_article_count); 
     $this->assign('valid_article_count',$valid_article_count); 
     $this->assign('alert_status',$alert_status);
