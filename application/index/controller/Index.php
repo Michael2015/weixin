@@ -109,7 +109,7 @@ class Index extends Frontend
             $this->error('微信只能绑定一次，提现失败',Url::build('/'));
         }
         //账户减积分
-        Db::name('user')->dec('score',$amount)->where(['user_id'=>$user_id])->update(['nickname'=>$wechat]);
+        Db::name('user')->dec('score',$amount)->where(['id'=>$user_id])->update(['nickname'=>$wechat]);
         //插入提现记录
         Db::name('user_withdraw_log')->insert(['user_id'=>$user_id,'amount'=>$amount,'wechat'=>$wechat,'createtime'=>date('Y-m-d H:i:s')]);
         $this->success('提现成功，稍后工作人员联系您');
