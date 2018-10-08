@@ -59,11 +59,11 @@ class Index extends Frontend
             $valid_article_count =  Db::name('read_article_log_'.date('Ymd'))->where(['user_id'=>$user_id,'is_valid'=>1])->count();
         }
         //\think\Cookie::get('token');
-        $username = $this->auth->getUser()->username;
+        $nickname = $this->auth->getUser()->nickname;
         $token = \think\Cookie::get('token');
         $score = $this->auth->getUser()->score;
 
-        $this->assign('username',$username);
+        $this->assign('nickname',$nickname);
         $this->assign('token',$token);
         //会员ID
         $this->assign('user_id',$user_id);
@@ -85,7 +85,7 @@ class Index extends Frontend
     public function withdraw()
     {
         $score = $this->auth->getUser()->score;
-        $username = $this->auth->getUser()->username;
+        $nickname = $this->auth->getUser()->nickname;
         $user_id = $this->auth->getUser()->id;
 
         $amount = $this->request->param('amount');
@@ -104,12 +104,12 @@ class Index extends Frontend
             $this->error('余额不足，提现失败',Url::build('/'));
         }
         //微信只绑定一次
-        if($username && $wechat !== $username)
+        if($nickname && $wechat !== $nickname)
         {
             $this->error('微信只能绑定一次，提现失败',Url::build('/'));
         }
         //账户减积分
-        Db::name('user')->dec('score',$amount)->where(['user_id'=>$user_id])->update();
+        Db::name('user')->dec('score',$amount)->where(['user_id'=>$user_id])->update(['nickname'=>$wechat]);
         //插入提现记录
         Db::name('user_withdraw_log')->insert(['user_id'=>$user_id,'amount'=>$amount,'wechat'=>$wechat,'createtime'=>date('Y-m-d H:i:s')]);
         $this->success('提现成功，稍后工作人员联系您');
