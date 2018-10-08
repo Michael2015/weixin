@@ -40,6 +40,7 @@ class Index extends Api
             $sql .= '`article_id` INT UNSIGNED  NOT NULL,';
             $sql .= '`user_id` INT UNSIGNED  NOT NULL,';
             $sql .= '`is_valid` TINYINT UNSIGNED DEFAULT 0  NOT NULL,';
+            $sql .= '`is_disable` TINYINT UNSIGNED DEFAULT 0  NOT NULL,';
             $sql .= '`createtime` datetime NOT NULL,';
             $sql .= 'PRIMARY KEY (id)';
             $sql .= ')ENGINE=InnoDB DEFAULT CHARSET=utf8;';
