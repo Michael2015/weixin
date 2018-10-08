@@ -5,6 +5,7 @@ namespace app\index\controller;
 use app\common\controller\Frontend;
 use app\common\library\Token;
 use think\Db;
+use think\Url;
 
 class Index extends Frontend
 {
@@ -25,7 +26,6 @@ class Index extends Frontend
     {
         $user_id = $this->auth->getUser()->id;
         //$user_id = 1;
-
         $tableIsExist = Db::query("show tables like '{$this->table_name}'; ");
         $alert_status = 0;
         $all_article_count = 0;
@@ -59,11 +59,13 @@ class Index extends Frontend
             $valid_article_count =  Db::name('read_article_log_'.date('Ymd'))->where(['user_id'=>$user_id,'is_valid'=>1])->count();
         }
         //\think\Cookie::get('token');
+        $username = $this->auth->getUser()->username;
         $token = \think\Cookie::get('token');
         $score = $this->auth->getUser()->score;
+
+        $this->assign('username',$username);
         $this->assign('token',$token);
         //会员ID
-
         $this->assign('user_id',$user_id);
         //获取该用户余额
         $this->assign('score',number_format($score/100,2));
@@ -77,6 +79,40 @@ class Index extends Frontend
     public function  star()
     {
         return $this->view->fetch();
+    }
+
+    //提现申请
+    public function withdraw()
+    {
+        $score = $this->auth->getUser()->score;
+        $username = $this->auth->getUser()->username;
+        $user_id = $this->auth->getUser()->id;
+
+        $amount = $this->request->param('amount');
+        $wechat = $this->request->param('wechat');
+        if(empty($amount) || empty($wechat))
+        {
+            $this->error('数字为空，提现失败',Url::build('/'));
+        }
+        if(!is_numeric($amount))
+        {
+            $this->error('类型不对，提现失败',Url::build('/'));
+        }
+        $amount = (int)$amount*100;
+        if($amount > $score)
+        {
+            $this->error('余额不足，提现失败',Url::build('/'));
+        }
+        //微信只绑定一次
+        if($username && $wechat !== $username)
+        {
+            $this->error('微信只能绑定一次，提现失败',Url::build('/'));
+        }
+        //账户减积分
+        Db::name('user')->dec('score',$amount)->where(['user_id'=>$user_id])->update();
+        //插入提现记录
+        Db::name('user_withdraw_log')->insert(['user_id'=>$user_id,'amount'=>$amount,'wechat'=>$wechat,'createtime'=>date('Y-m-d H:i:s')]);
+        $this->success('提现成功，稍后工作人员联系您');
     }
 
 }

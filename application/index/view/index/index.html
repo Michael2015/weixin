@@ -13,134 +13,135 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <style type="text/css">
-.container-fluid .row
-{
-    border-bottom: 1px solid #ddd;
-    background-color:#24292e;
-}
-.list-group-item
-{
-    border-radius: 0;
-    border: 0;
-    border-bottom: 0;
-    padding: 4px 15px;
-    float: right;
-    background-color: transparent;
-    color: #eee;
-}
-.list-group
-{
-    margin-bottom: 0;
-    list-style-type: none;
-}
-.list-group-item:last-child 
-{
-    border-radius: 0px;
-}
-.page-header
-{
-    border:0;
-    margin: 0;
-}
-.page-header h1
-{
-    margin-top: 0px;
-    margin-bottom: -2px;
-    text-align: center;
-}
-.page-header h1>small
-{
- color: #eee;
-}
-.list-group-item>.badge
-{
-    margin-left: 5px;
-    background: yellow;
-    color: blue;
-}
-.jumbotron
-{
-    margin-bottom: 0;
-}
-.jumbotron .container
-{
-    text-align: center;
-    margin: 0;
-    padding: 50px 0;
-}
-.jumbotron2
-{
-    margin: 0 auto;
-    background: transparent;
-    padding: 0;
-    margin-bottom: 30px;
-}
-.jumbotron2 .container
-{
-    padding: 0;
-}
-.jumbotron2 img
-{
-    width: 50%;
-    margin-left: 25%;
-}
-.alert-dismissable, .alert-dismissible
-{
-    text-align: left;
-    padding-right:15px;
-}
-footer
-{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-footer .btn
-{
-    border-radius: 0;
-}
-#alert-status-1>span 
-{
-    font-size: 16px;
-    font-weight: 700;
-    color: red;
-}
+    .container-fluid .row
+    {
+        border-bottom: 1px solid #ddd;
+        background-color:#24292e;
+        padding: 8px 0;
+    }
+    .list-group-item
+    {
+        border-radius: 0;
+        border: 0;
+        border-bottom: 0;
+        padding: 4px 15px;
+        float: right;
+        background-color: transparent;
+        color: #eee;
+    }
+    .list-group
+    {
+        margin-bottom: 0;
+        list-style-type: none;
+    }
+    .list-group-item:last-child
+    {
+        border-radius: 0px;
+    }
+    .page-header
+    {
+        border:0;
+        margin: 0;
+    }
+    .page-header h1
+    {
+        margin-top: 0px;
+        margin-bottom: -2px;
+        text-align: center;
+    }
+    .page-header h1>small
+    {
+        color: #eee;
+    }
+    .list-group-item>.badge
+    {
+        margin-left: 5px;
+        background: yellow;
+        color: blue;
+    }
+    .jumbotron
+    {
+        margin-bottom: 0;
+    }
+    .jumbotron .container
+    {
+        text-align: center;
+        margin: 0;
+        padding: 50px 0;
+    }
+    .jumbotron2
+    {
+        margin: 0 auto;
+        background: transparent;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    .jumbotron2 .container
+    {
+        padding: 0;
+    }
+    .jumbotron2 img
+    {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .alert-dismissable, .alert-dismissible
+    {
+        text-align: left;
+        padding-right:15px;
+    }
+    footer
+    {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    footer .btn
+    {
+        border-radius: 0;
+    }
+    #alert-status-1>span
+    {
+        font-size: 16px;
+        font-weight: 700;
+        color: red;
+    }
 </style>
 <body>
-    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-    <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-4 col-sm-4">
+<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4 col-sm-4">
             <div class="page-header">
-              <h1><small>会员号 {$user_id}</small></h1>
-          </div>
-      </div>
-      <div class="col-xs-8 col-sm-4">
-        <ul class="list-group">
-          <li class="list-group-item">
-            <span class="badge">{$all_article_count}/次</span>
-            今日阅读量
-        </li>
-        <li class="list-group-item">
-            <span class="badge">{$valid_article_count}/次</span>
-            有效阅读量
-        </li>
-        <li class="list-group-item">
-            <span class="badge">{$score}/元</span>
-            账户总余额
-        </li>
-    </ul>
-</div>
-</div>
+                <h1><small>会员号 {$user_id}</small></h1>
+            </div>
+        </div>
+        <div class="col-xs-8 col-sm-4">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="badge">{$all_article_count}/次</span>
+                    今日阅读量
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">{$valid_article_count}/次</span>
+                    有效阅读量
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">{$score}/元</span>
+                    账户总余额
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <div class="jumbotron">
     <div class="container">
-        {if ( $alert_status === 0)} 
+        {if ( $alert_status === 0)}
         <button type="button" class="btn btn-primary" onclick="return getUrl();">马 上 阅 读</button>
         {elseif $alert_status == 1 /}
         <div id="alert-status-1"><span>5</span>秒后自动进入下一篇文章</div>
-        {else /} 
+        {else /}
         <button type="button" class="btn btn-primary" onclick="return getUrl();">马 上 阅 读</button>
         <div class="alert alert-warning text-center" id="alert-status-2" role="alert" style="position: fixed;top: 0;width: 100%;">
             阅读越多，赚得越多
@@ -151,19 +152,19 @@ footer .btn
 
 <div class="jumbotron jumbotron2">
     <div class="container">
-     <div class="list-group">
-      <div class="alert alert-warning alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
-          <h4><strong>赚钱技巧</strong><span class="glyphicon glyphicon-star-empty" style="float: right;"></span><span style="float: right;" onclick="window.location.href='https://mp.weixin.qq.com/s/oUYlhpMMznaJs4gAzLwHUA';">收藏网址</span><span class="glyphicon glyphicon-star-empty" style="float: right;"></h4>
-              <h6>1.新用户首次注册奖励0.5元</h6>
-              <h6>2.每一次阅读单价0.03元，满1元即可提现；</h6>
-              <h6>3.阅读时间间隔在5秒及以上，否则视为无效阅读；</h6>
-              <h6>4.进入文章后，可以按微信底部返回按钮返回；</h6>
-              <h6>5.任何问题，欢迎咨询微信客服shan47636；</h6>
-              <img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fvzmiw6a50j3076076gm2.jpg">
-          </div>
-      </div>
-  </div>
+        <div class="list-group">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                <h4><strong>赚钱技巧</strong><span class="glyphicon glyphicon-star-empty" style="float: right;"></span><span style="float: right;" onclick="window.location.href='https://mp.weixin.qq.com/s/oUYlhpMMznaJs4gAzLwHUA';">收藏网址</span><span class="glyphicon glyphicon-star-empty" style="float: right;"></h4>
+                <h6>1.新用户首次注册奖励0.5元</h6>
+                <h6>2.每一次阅读单价0.03元，满1元即可提现；</h6>
+                <h6>3.阅读时间间隔在5秒及以上，否则视为无效阅读；</h6>
+                <h6>4.进入文章后，可以按微信底部返回按钮返回；</h6>
+                <h6>5.任何问题，欢迎咨询微信客服shan47636；</h6>
+                <img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fvzmiw6a50j3076076gm2.jpg">
+            </div>
+        </div>
+    </div>
 </div>
 <footer>
     <button type="button" class="btn btn-primary btn-lg btn-block"> 我 要 提 现 </button>
@@ -171,110 +172,134 @@ footer .btn
 <div class="alert alert-warning text-center" id="alert-status-4" role="alert" style="display:none;position: fixed;top: 0;width: 100%;">
     后台暂无文章，请稍后刷新
 </div>
+{if ( $score < 1)}
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">亲爱的客户</h4>
+            </div>
+            <div class="modal-body">
+                余额不足1元，提现失败
+            </div>
+        </div>
+    </div>
+</div>
+{else /}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">亲爱的客户</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{:url('/index/index/withdraw')}" method="post">
+                    <div class="form-group">
+                        <label for="money">提现金额</label>
+                        <input type="number" name="amount" class="form-control" value="1" min="1" max="10" id="money" required placeholder="整数">
+                    </div>
+                    <div class="form-group">
+                        <label for="wechat">绑定微信</label>
+                        <input type="text" name="wechat" value="{if condition='$username'} {$username} {/if}" {if condition="$username"} readonly {/if} class="form-control" id="wechat" required placeholder="注意：微信只能绑定一次">
+                    </div>
+                    <div class="form-group">
+                        <label >任何疑问，欢迎咨询</label>
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fw0rb6plunj30u00u0acf.jpg" width="100%">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">　提　交　</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $().ready(function(){
-
         if( $('#alert-status-2').length > 0)
         {
             $('#alert-status-2').delay(2000).hide('slow');
         }
-
         if( $('#alert-status-1').length > 0)
         {
             sec = 5;
             var timer = setInterval(function(){
 
-             $('#alert-status-1>span').html(sec);
-             sec = sec-1;
-             if( sec === -1)
-             {
-                window.clearInterval(timer); 
-                getUrl();
-            }
-
-        },1000);
+                $('#alert-status-1>span').html(sec);
+                sec = sec-1;
+                if( sec === -1)
+                {
+                    window.clearInterval(timer);
+                    getUrl();
+                }
+            },1000);
         }
-
     });
 
     function getUrl()
     {
         $.ajax({ url: "{:url('api/index/log',['token'=>$token])}", context: document.body, success: function(msg){
-            if(msg.code === 1)
-            {
-                window.location.href = msg.data.article_url;
-            }
-            else
-            {
-                $('#alert-status-4').delay(1000).show('fast');
-                $('#alert-status-4').delay(2000).hide('slow');
-            }
-        }});
+                if(msg.code === 1)
+                {
+                    window.location.href = msg.data.article_url;
+                }
+                else
+                {
+                    $('#alert-status-4').delay(1000).show('fast');
+                    $('#alert-status-4').delay(2000).hide('slow');
+                }
+            }});
     }
 </script>
-
 //微信后台刷新
 <script>
-
-  //生成uuid
-
-  var uuidChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
-
-  function uuid() {
-
-    var r;
-
-    var uuid = [];
-
-    uuid[8] = uuid[13] = uuid[18] = uuid[23] = "-";
-
-    uuid[14] = "4";
-
-    for (i = 0; i < 36; i++) {
-
-      if (!uuid[i]) {
-
-        r = 0 | Math.random() * 16;
-
-        uuid[i] = uuidChars[(i == 19) ? (r & 0x3) | 0x8 : r];
-
-      }
-
+    //生成uuid
+    var uuidChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
+    function uuid() {
+        var r;
+        var uuid = [];
+        uuid[8] = uuid[13] = uuid[18] = uuid[23] = "-";
+        uuid[14] = "4";
+        for (i = 0; i < 36; i++) {
+            if (!uuid[i]) {
+                r = 0 | Math.random() * 16;
+                uuid[i] = uuidChars[(i == 19) ? (r & 0x3) | 0x8 : r];
+            }
+        }
+        return uuid.join("");
     }
 
-    return uuid.join("");
-
-  }
-
-  // 兼容 android
-
-  history.replaceState(null, null, "/index/index/index?r="+uuid());
-
-  // 兼容 ios
-
-  $(function () {
-
-     var isPageHide = false;
-
-     window.addEventListener('pageshow', function () {
-
-      if (isPageHide) {
-
-       window.location.reload();
-
-      }
-
-     });
-
-     window.addEventListener('pagehide', function () {
-
-      isPageHide = true;
-
-     });
-
-  })
-
+    // 兼容 android
+    history.replaceState(null, null, "/index/index/index?r="+uuid());
+    // 兼容 ios
+    $(function () {
+        var isPageHide = false;
+        window.addEventListener('pageshow', function () {
+            if (isPageHide) {
+                window.location.reload();
+            }
+        });
+        window.addEventListener('pagehide', function () {
+            isPageHide = true;
+        });
+    })
+</script>
+<!-- 提现弹窗 -->
+<script>
+    $('footer>button').on('click',function(){
+        $('#myModal').modal('toggle');
+    });
 </script>
 </body>
 </html>

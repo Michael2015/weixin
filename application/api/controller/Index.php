@@ -11,7 +11,7 @@ use think\Db;
 class Index extends Api
 {
 
-    protected $noNeedLogin = '';
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
     private $user_id;
     private $table_name;
@@ -65,7 +65,6 @@ class Index extends Api
             {
                 Db::name('article')->where(['id'=>$article_id])->update(['is_valid'=>0]);
             }
-
             $return['article_url'] = $article_info[0]['article_url'];
             $this->success('success',$return);
         }
@@ -73,7 +72,6 @@ class Index extends Api
         {
            $this->error('empty'); 
         }
-        
     }
 
 }

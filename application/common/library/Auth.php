@@ -163,7 +163,7 @@ class Auth
             'avatar'   => '',
         ];
         $params = array_merge($data, [
-            'nickname'  => $username,
+            'nickname'  => '',
             'salt'      => Random::alnum(),
             'jointime'  => $time,
             'joinip'    => $ip,
