@@ -49,11 +49,23 @@ class Index extends Api
         }
 
         //生成随机文章
-        $article_info  = Db::query("select id,article_url from fa_article where  id not in (select article_id from {$this->table_name} where user_id = {$this->user_id}) limit 1; ");
+        $article_info  = Db::query("select id,article_url,max_read_number,read_amount from fa_article where is_valid = 1 and  id not in (select article_id from fa_user_article_relation_log where user_id = {$this->user_id}) limit 1; ");
         if($article_info)
         {
             $article_id = $article_info[0]['id'];
-            Db::name('read_article_log_'.date('Ymd'))->insert(['user_id'=>$this->user_id,'article_id'=>$article_id,'createtime'=>date('Y-m-d H:i:s')]);
+
+            //更新阅读量
+            if($article_info[0]['read_amount'] <= $article_info[0]['max_read_number'])
+            {
+                Db::name('article')->where(['id'=>$article_id])->inc('read_amount',1)->update();
+                Db::name('read_article_log_'.date('Ymd'))->insert(['user_id'=>$this->user_id,'article_id'=>$article_id,'createtime'=>date('Y-m-d H:i:s')]);
+                Db::name('user_article_relation_log')->insert(['user_id'=>$this->user_id,'article_id'=>$article_id]);
+            }
+            else
+            {
+                Db::name('article')->where(['id'=>$article_id])->update(['is_valid'=>0]);
+            }
+
             $return['article_url'] = $article_info[0]['article_url'];
             $this->success('success',$return);
         }
