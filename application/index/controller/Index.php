@@ -46,7 +46,7 @@ class Index extends Frontend
                     if($result)
                     {
                         //将对应的用户积分更新
-                        Db::name('user')->where(['id'=>$user_id])->inc('score',3)->update();
+                        Db::name('user')->where(['id'=>$user_id])->inc('score',2)->update();
                     }
                 }
                 else
