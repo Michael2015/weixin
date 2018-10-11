@@ -102,7 +102,7 @@
     }
     #alert-status-1>span
     {
-        font-size: 16px;
+        font-size: 2em;
         font-weight: 700;
         color: red;
     }
@@ -141,10 +141,15 @@
         <button type="button" class="btn btn-primary" onclick="return getUrl();">马 上 阅 读</button>
         {elseif $alert_status == 1 /}
         <div id="alert-status-1"><span>5</span>秒后自动进入下一篇文章</div>
+        {elseif $alert_status == 3 /}
+        <button type="button" class="btn btn-primary" onclick="return getUrl();">马 上 阅 读</button>
+        <div class="alert alert-warning text-center" id="alert-status-3" role="alert" style="position: fixed;top: 0;width: 100%;">
+            首次注册送0.5元，满1元即可提现
+        </div>
         {else /}
         <button type="button" class="btn btn-primary" onclick="return getUrl();">马 上 阅 读</button>
         <div class="alert alert-warning text-center" id="alert-status-2" role="alert" style="position: fixed;top: 0;width: 100%;">
-            时间要超过5秒，否则无效阅读
+            阅读时间要超过5秒，否则无效
         </div>
         {/if}
     </div>
@@ -234,6 +239,12 @@
         {
             $('#alert-status-2').delay(2000).hide('slow');
         }
+        //首次进入系统提示信息
+        if( $('#alert-status-3').length > 0)
+        {
+            $('#alert-status-3').delay(2000).hide('slow');
+        }
+
         if( $('#alert-status-1').length > 0)
         {
             sec = 5;

@@ -58,6 +58,17 @@ class Index extends Frontend
             //获取用户今天有效阅读数
             $valid_article_count =  Db::name('read_article_log_'.date('Ymd'))->where(['user_id'=>$user_id,'is_valid'=>1])->count();
         }
+
+        if($alert_status === 0)
+        {
+            //判断用户是不是第一次进来的
+            $is_new_user = Db::name('user_article_relation_log')->where(['user_id'=>$user_id])->count();
+            if($is_new_user === 0)
+            {
+                $alert_status = 3;
+            }
+        }
+
         //\think\Cookie::get('token');
         $nickname = $this->auth->getUser()->nickname;
         $token = \think\Cookie::get('token');
