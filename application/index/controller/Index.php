@@ -10,7 +10,7 @@ use think\Url;
 class Index extends Frontend
 {
 
-    protected $noNeedLogin = '*';
+    protected $noNeedLogin = '';
     protected $noNeedRight = '*';
 
 
