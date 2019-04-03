@@ -34,9 +34,11 @@ class Index extends Frontend
         {
             $current_video_url = '';
         }
+        $current_video_name = $current_video['name'];
 
         $this->assign('current_id',$video_id);
         $this->assign('current_video_url',$current_video_url);
+        $this->assign('current_video_name',$current_video_name);
         $this->assign('video_list',$video_list);
         $this->assign('last_video_id',max(1,$id) == 1 ? 1 : $id - 1);
         $this->assign('next_video_id',count($video_list) - $id < 0 ? count($video_list) : $id + 1);
