@@ -23,7 +23,7 @@ class Index extends Frontend
         $is_level = $this->user['level'];
         $createtime = $this->user['createtime'];
 
-
+print_r($this->user);
         $video_id = input('video_id','9');
         $video_list = db('channel')->select();
         $current_video = db('channel')->where(['id'=>$video_id])->find();
@@ -31,7 +31,7 @@ class Index extends Frontend
         $id = $current_video['id'];
 
         $current_video_url = $current_video['url'];
-        if($is_level == 0 && time() > strtotime('+3 days ',$createtime))
+        if($is_level == 0 && time() > strtotime('+3 days',$createtime))
         {
             $current_video_url = '';
         }
