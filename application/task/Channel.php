@@ -3,6 +3,8 @@
 namespace app\task;
 use app\common\library\Curl2;
 use think\console\Command;
+use think\console\Input;
+use think\console\Output;
 
 class Channel extends Command
 {
@@ -10,7 +12,6 @@ class Channel extends Command
     {
         $this->setName('channel')->setDescription('Here is the remark ');
     }
-
     protected function execute(Input $input, Output $output)
     {
         //初始化
