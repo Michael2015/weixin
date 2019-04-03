@@ -18,8 +18,9 @@ class Index extends Frontend
 
     public function index()
     {
-        $video_id = input('video_id','c4ca4238a0b923820dcc509a6f75849b');
-        $video_list = [
+        //$this->doCurl();
+        $video_id = input('video_id','9');
+       /* $video_list = [
             'c4ca4238a0b923820dcc509a6f75849b' => ['id'=>1,'name'=>'翡翠台','url'=>'http://live.xiaochai.club/wintv/922bbe495a87497da1c0a461dd1bbcde.m3u8'],
             'c81e728d9d4c2f636f067f89cc14862c' => ['id'=>2,'name'=>'翡翠台2','url'=>'http://play.cnrmall.com/live/0e86b397a216405fbb0161f7beee7dea.m3u8'],
             'eccbc87e4b5ce2fe28308fd9f2a7baf3' => ['id'=>3,'name'=>'603台','url'=>'http://c01.live.aliyuncdn.sharkselection.com/live/825e9e0bdc0744e0ac199264ac77439d.m3u8'],
@@ -41,20 +42,25 @@ class Index extends Frontend
             '1f0e3dad99908345f7439f8ffabdffc4' => ['id'=>19,'name'=>'迪士尼卡通','url'=>'http://live-dft-hls-yf.jstv.com/live/b3a6b3755bdd49879b65e21cb71ba400/online.m3u8'],
             '98f13708210194c475687be6106a3b84' => ['id'=>20,'name'=>'寰宇新闻','url'=>'http://bsyll.qingk.cn/live/8ac83d0396cc486ba5cd514c01de27ea/index.m3u8'],
             '3c59dc048e8850243be8079a5c74d079' => ['id'=>21,'name'=>'球彩台','url'=>'http://c01.live.aliyuncdn.sharkselection.com/live/b5ac542c2a914732bd666ef01cd3a40f.m3u8'],
-        ];
-        $id = isset($video_list[$video_id]['id']) ? $video_list[$video_id]['id'] : die('非法访问');
-        $current_video_url = $video_list[$video_id]['url'];
+        ];*/
+        $video_list = db('channel')->select();
 
+        $curren_video = db('channel')->where(['id'=>$video_id])->find();
 
-        $min = min(count($video_list),$id);
-        $last_video_id = $id  - 1 < 1 ? md5($id) : md5($id-1);
-        $next_video_id = count($video_list) - $min   < 1 ? md5($min) : md5($min+1);
+        if(!$curren_video)
+        {
+            die('非法访问');
+        }
+
+        $id = $curren_video['id'];
+        $current_video_url = $curren_video['url'];
+
 
         $this->assign('current_id',$video_id);
         $this->assign('current_video_url',$current_video_url);
         $this->assign('video_list',$video_list);
-        $this->assign('last_video_id',$last_video_id);
-        $this->assign('next_video_id',$next_video_id);
+        $this->assign('last_video_id',max(1,$id) == 1 ? 1 : $id - 1);
+        $this->assign('next_video_id',count($video_list) - $id < 0 ? count($video_list) : $id + 1);
         return $this->view->fetch();
     }
 
@@ -65,8 +71,77 @@ class Index extends Frontend
     }
 
     //提现申请
-    public function withdraw()
+    public function doCurl()
     {
+        //初始化
+        $curl = curl_init();
+        //设置抓取的url
+        curl_setopt($curl, CURLOPT_URL, 'http://wx.ottcom.cn/');
+        //设置头文件的信息作为数据流输出
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+        //设置获取的信息以文件流的形式返回，而不是直接输出。
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        //执行命令
+        $content = curl_exec($curl);
+        //关闭URL请求
+        curl_close($curl);
+        //显示获得的数据
+        preg_match_all('#<a[\s]*href="/news/view/id/(.*?)">#im',$content,$match);
+
+        if($match)
+        {
+            $cookie = $this->curl_request('http://wx.ottcom.cn/login/mlogin',['uname'=>'13713018282','upass'=>'aaaaaa'],0,1);
+            foreach ($match[1] as $video_id)
+            {
+                $video_play = $this->curl_request('http://wx.ottcom.cn//news/view/id/'.$video_id,[],$cookie['cookie'],0);
+                preg_match('#<video[\s]+src="(.*?)"#im',$video_play,$match2);
+                $video_url = $match2[1];
+                preg_match('#<h2[^>]+>(.*?)<\/h2>#is',$video_play,$match3);
+                $video_name = trim($match3[1]);
+                if(db('channel')->where(['name'=>$video_name])->find())
+                {
+                    db('channel')->where(['name'=>$video_name])->update(['url'=>$video_url]);
+                }
+                else
+                {
+                    db('channel')->insert(['name'=>$video_name,'url'=>$video_url]);
+                }
+            }
+        }
+    }
+
+    //参数1：访问的URL，参数2：post数据(不填则为GET)，参数3：提交的$cookies,参数4：是否返回$cookies
+    public function curl_request($url,$post='',$cookie='', $returnCookie=0){
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)');
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
+        curl_setopt($curl, CURLOPT_REFERER, "http://XXX");
+        if($post) {
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($post));
+        }
+        if($cookie) {
+            curl_setopt($curl, CURLOPT_COOKIE, $cookie);
+        }
+        curl_setopt($curl, CURLOPT_HEADER, $returnCookie);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $data = curl_exec($curl);
+        if (curl_errno($curl)) {
+            return curl_error($curl);
+        }
+        curl_close($curl);
+        if($returnCookie){
+            list($header, $body) = explode("\r\n\r\n", $data, 2);
+            preg_match_all("/Set\-Cookie:([^;]*);/", $header, $matches);
+            $info['cookie']  = substr($matches[1][0], 1);
+            $info['content'] = $body;
+            return $info;
+        }else{
+            return $data;
+        }
     }
 
 }
