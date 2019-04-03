@@ -13,7 +13,7 @@ class Index extends Frontend
 
     public function _initialize()
     {
-        $user = $this->auth->getUser();
+        $user = $this->auth->id;
         print_r($user);
 
         parent::_initialize();
