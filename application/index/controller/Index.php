@@ -9,14 +9,14 @@ class Index extends Frontend
 
     protected $noNeedLogin = '';
     protected $noNeedRight = '*';
+    private $user;
 
 
     public function _initialize()
     {
-        $user = $this->auth->id;
-        print_r($user);
-
         parent::_initialize();
+        $this->user = $this->auth->createtime;
+        print_r($this->user);
     }
 
     public function index()
