@@ -15,18 +15,27 @@ class Index extends Frontend
     public function _initialize()
     {
         parent::_initialize();
-        $this->user = $this->auth->createtime;
-        print_r($this->user);
+        $this->user = $this->auth->getUser();
     }
 
     public function index()
     {
+        $is_level = $this->user['level'];
+        $createtime = $this->user['createtime'];
+
+
         $video_id = input('video_id','9');
         $video_list = db('channel')->select();
         $current_video = db('channel')->where(['id'=>$video_id])->find();
         if(!$current_video) die('非法访问');
         $id = $current_video['id'];
+
         $current_video_url = $current_video['url'];
+        if($is_level == 0 && time() > strtotime('+3 days ',$createtime))
+        {
+            $current_video_url = '';
+        }
+
         $this->assign('current_id',$video_id);
         $this->assign('current_video_url',$current_video_url);
         $this->assign('video_list',$video_list);
