@@ -43,12 +43,15 @@ class Index extends Frontend
             '3c59dc048e8850243be8079a5c74d079' => ['id'=>21,'name'=>'球彩台','url'=>'http://c01.live.aliyuncdn.sharkselection.com/live/b5ac542c2a914732bd666ef01cd3a40f.m3u8'],
         ];
         $id = isset($video_list[$video_id]['id']) ? $video_list[$video_id]['id'] : die('非法访问');
+        $current_video_url = $video_list[$video_id]['url'];
+
 
         $min = min(count($video_list),$id);
         $last_video_id = $id  - 1 < 1 ? md5($id) : md5($id-1);
         $next_video_id = count($video_list) - $min   < 1 ? md5($min) : md5($min+1);
 
         $this->assign('current_id',$video_id);
+        $this->assign('current_video_url',$current_video_url);
         $this->assign('video_list',$video_list);
         $this->assign('last_video_id',$last_video_id);
         $this->assign('next_video_id',$next_video_id);
