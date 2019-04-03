@@ -18,7 +18,6 @@ class Index extends Frontend
 
     public function index()
     {
-        //$this->doCurl();
         $video_id = input('video_id','9');
        /* $video_list = [
             'c4ca4238a0b923820dcc509a6f75849b' => ['id'=>1,'name'=>'翡翠台','url'=>'http://live.xiaochai.club/wintv/922bbe495a87497da1c0a461dd1bbcde.m3u8'],
@@ -45,17 +44,15 @@ class Index extends Frontend
         ];*/
         $video_list = db('channel')->select();
 
-        $curren_video = db('channel')->where(['id'=>$video_id])->find();
+        $current_video = db('channel')->where(['id'=>$video_id])->find();
 
-        if(!$curren_video)
+        if(!$current_video)
         {
             die('非法访问');
         }
 
-        $id = $curren_video['id'];
-        $current_video_url = $curren_video['url'];
-
-
+        $id = $current_video['id'];
+        $current_video_url = $current_video['url'];
         $this->assign('current_id',$video_id);
         $this->assign('current_video_url',$current_video_url);
         $this->assign('video_list',$video_list);
@@ -63,85 +60,4 @@ class Index extends Frontend
         $this->assign('next_video_id',count($video_list) - $id < 0 ? count($video_list) : $id + 1);
         return $this->view->fetch();
     }
-
-    //收藏网址教程
-    public function  star()
-    {
-        return $this->view->fetch();
-    }
-
-    //提现申请
-    public function doCurl()
-    {
-        //初始化
-        $curl = curl_init();
-        //设置抓取的url
-        curl_setopt($curl, CURLOPT_URL, 'http://wx.ottcom.cn/');
-        //设置头文件的信息作为数据流输出
-        curl_setopt($curl, CURLOPT_HEADER, 1);
-        //设置获取的信息以文件流的形式返回，而不是直接输出。
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        //执行命令
-        $content = curl_exec($curl);
-        //关闭URL请求
-        curl_close($curl);
-        //显示获得的数据
-        preg_match_all('#<a[\s]*href="/news/view/id/(.*?)">#im',$content,$match);
-
-        if($match)
-        {
-            $cookie = $this->curl_request('http://wx.ottcom.cn/login/mlogin',['uname'=>'13713018282','upass'=>'aaaaaa'],0,1);
-            foreach ($match[1] as $video_id)
-            {
-                $video_play = $this->curl_request('http://wx.ottcom.cn//news/view/id/'.$video_id,[],$cookie['cookie'],0);
-                preg_match('#<video[\s]+src="(.*?)"#im',$video_play,$match2);
-                $video_url = $match2[1];
-                preg_match('#<h2[^>]+>(.*?)<\/h2>#is',$video_play,$match3);
-                $video_name = trim($match3[1]);
-                if(db('channel')->where(['name'=>$video_name])->find())
-                {
-                    db('channel')->where(['name'=>$video_name])->update(['url'=>$video_url]);
-                }
-                else
-                {
-                    db('channel')->insert(['name'=>$video_name,'url'=>$video_url]);
-                }
-            }
-        }
-    }
-
-    //参数1：访问的URL，参数2：post数据(不填则为GET)，参数3：提交的$cookies,参数4：是否返回$cookies
-    public function curl_request($url,$post='',$cookie='', $returnCookie=0){
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)');
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
-        curl_setopt($curl, CURLOPT_REFERER, "http://XXX");
-        if($post) {
-            curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($post));
-        }
-        if($cookie) {
-            curl_setopt($curl, CURLOPT_COOKIE, $cookie);
-        }
-        curl_setopt($curl, CURLOPT_HEADER, $returnCookie);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $data = curl_exec($curl);
-        if (curl_errno($curl)) {
-            return curl_error($curl);
-        }
-        curl_close($curl);
-        if($returnCookie){
-            list($header, $body) = explode("\r\n\r\n", $data, 2);
-            preg_match_all("/Set\-Cookie:([^;]*);/", $header, $matches);
-            $info['cookie']  = substr($matches[1][0], 1);
-            $info['content'] = $body;
-            return $info;
-        }else{
-            return $data;
-        }
-    }
-
 }
