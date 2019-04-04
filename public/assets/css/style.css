@@ -148,3 +148,7 @@ a{
 {
     width: 68%;
 }
+.about_box video
+{
+    object-fit: fill;
+}
