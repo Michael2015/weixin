@@ -41,57 +41,35 @@ a {
 }
 
 .pagination>li:first-child>a, .pagination>li:first-child>span {
-
     margin-left: 0;
-
     border-top-left-radius: 4px;
-
     border-bottom-left-radius: 4px
-
 }
 
 .pagination>li:last-child>a, .pagination>li:last-child>span {
-
     border-top-right-radius: 4px;
-
     border-bottom-right-radius: 4px
-
 }
 
 .pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
-
     color: #2a6496;
-
     background-color: #eee;
-
     border-color: #ddd
-
 }
 
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
-
     z-index: 2;
-
     color: #fff;
-
     cursor: default;
-
     background-color: #2f6b35;
-
     border-color: #2f6b35
-
 }
 
 .pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus {
-
     color: #777;
-
     cursor: not-allowed;
-
     background-color: #fff;
-
     border-color: #ddd
-
 }
 
 .pagination-lg>li>a, .pagination-lg>li>span {
@@ -111,57 +89,36 @@ a {
 }
 
 .pagination-lg>li:last-child>a, .pagination-lg>li:last-child>span {
-
     border-top-right-radius: 6px;
-
     border-bottom-right-radius: 6px
-
 }
 
 .pagination-sm>li>a, .pagination-sm>li>span {
-
     padding: 5px 10px;
-
     font-size: 12px
-
 }
 
 .pagination-sm>li:first-child>a, .pagination-sm>li:first-child>span {
-
     border-top-left-radius: 3px;
-
     border-bottom-left-radius: 3px
-
 }
 
 .pagination-sm>li:last-child>a, .pagination-sm>li:last-child>span {
-
     border-top-right-radius: 3px;
-
     border-bottom-right-radius: 3px
-
 }
-
-
 
 ul li, ol li {
-
     list-style: none;
-
 }
-
-
 
 .fl_l{
 
     float:left;
-
 }
 
 .fl_r{
-
     float: right;
-
 }
 
 
@@ -185,199 +142,110 @@ ul li, ol li {
 .pb_10{
 
     padding-bottom:10px;
-
 }
-
-
-
-
 
 body {
-
     font-family:microsoft yahei, san-serif;
-
     font-size: 14px;
-
     line-height: 24px;
-
     color: #333333;
-
     margin:0;
-
     padding:0;
-
-    background-color:#ef8203;
-
 }
-
-
-
-
 
 #main_box{
-
     width:100%;
-
     height:auto;
-
     margin:0 auto;
-
     padding:0;
-
     clear:both;
-
     border:1px solid #ff0000;
-
 }
 
-
-
 .top{
-
     margin-top:1em;
-
     width:100%;
-
     height:auto;
-
     background-color: #f4c681;
-
     overflow: hidden;
-
 }
 
 .top .logo{
-
     width: 70%;
-
     float: left;
-
     margin-left:2em;
-
     color: #fff;
-
     font-size: 16px;
-
     margin-top:8px;
-
 }
 
 .top .menu{
-
     width: 9%;
-
     float: left;
-
     margin-top: 0.7em;
-
     margin-left: 1.5em;
-
 }
 
 .banner{
-
     width:100%;
-
     height: auto;
-
 }
 
 .banner img{
-
     width:100%;
-
     display:block;
-
 }
 
 .nav{
-
     background-color: #fff;
-
     padding:0.8em 0.5em;
-
     overflow: hidden;
-
 }
 
 .nav ul{
-
     padding: 0
-
 }
 
 .nav ul li{
-
     margin-left:2.5em;
-
     float:left;
-
     width:20%;
-
 }
-
-
 
 .index_title{
-
     margin-top:0.3em;
-
     background-color: #f4c681;
-
     text-align: center;
-
     color: #fff;
-
     font-size:18px;
-
     padding:0.5em;
-
 }
-
 
 
 .index_jj{
-
     padding-top:0.5em;
-
     padding-left:0.4em;
-
     padding-right:0.4em;
-
     color:#fff;
-
     overflow: hidden;
-
 }
 
 .index_jj .pic{
-
-    width:30%; float: left;
-
+    width:30%;
+    float: left;
     height: auto;
-
     padding:2%;
-
-
-
 }
 
 .index_jj .txt{
-
-    width: 65%;float: left
-
+    width: 65%;
+    float: left
 }
 
-
-
 .art_list dl{
-
     background-color: #fff;
-
     overflow: hidden;
-
     margin-top:0.2em;
-
 }
 
 .art_list dl dd{
@@ -461,11 +329,8 @@ body {
 }
 
 .mymenu .tel{
-
     background:url('../images/m_tel.png') no-repeat 0.4em center;
-
     background-size:18%;
-
 }
 
 .my_box{
@@ -480,11 +345,8 @@ body {
 }
 
 .my_box img{
-
     width:100%;
-
     border-radius: 3px;
-
 }
 
 .expert_box .expert_img{
@@ -593,8 +455,6 @@ body {
     text-align: center;
 }
 
-
-
 .mylogin input[type="text"], .mylogin input[type="password"]{
     font-size: 15px;
     height: auto;
@@ -606,45 +466,25 @@ body {
 }
 
 .btn{
-
     display: inline-block;
-
     *display: inline;
-
     padding: 4px 12px;
-
     margin-bottom: 0;
-
     *margin-left: .3em;
-
     font-size: 14px;
-
     line-height: 20px;
-
     color: #333333;
-
     text-align: center;
-
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-
     vertical-align: middle;
-
     cursor: pointer;
-
     background-color: #f5f5f5;
-
     *background-color: #e6e6e6;
-
     background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-
     background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-
     background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-
     background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-
     background-repeat: repeat-x;
     border: 1px solid #cccccc;
     *border: 0;
@@ -660,7 +500,6 @@ body {
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-
 }
 
 .red{
@@ -670,7 +509,6 @@ body {
 .mecont{
     text-align: center;
 }
-
 
 
 .mecont .txt{
