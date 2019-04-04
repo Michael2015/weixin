@@ -36,6 +36,7 @@ class Index extends Frontend
         }
         $current_video_name = $current_video['name'];
 
+        $this->assign('user_id',$this->user['id']);
         $this->assign('current_id',$video_id);
         $this->assign('current_video_url',$current_video_url);
         $this->assign('current_video_name',$current_video_name);
