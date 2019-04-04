@@ -23,7 +23,7 @@ class Index extends Frontend
         $is_level = $this->user['level'];
         $createtime = $this->user['createtime'];
 
-        $video_id = input('video_id','9');
+        $video_id = input('video_id',1);
         $video_list = db('channel')->select();
         $current_video = db('channel')->where(['id'=>$video_id])->find();
         if(!$current_video) die('非法访问');
