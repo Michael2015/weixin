@@ -68,8 +68,12 @@ body {
 }
 
 .footer .fleft{
-    padding:1em ;
+    padding:2%;
     float: left;
+}
+.footer .fleft p
+{
+    width: 96%;
 }
 
 .my_box{
