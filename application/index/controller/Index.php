@@ -30,7 +30,7 @@ class Index extends Frontend
         $id = $current_video['id'];
 
         $current_video_url = $current_video['url'];
-        if($is_level == 1 && time() > strtotime('+3 days',$createtime))
+        if($is_level == 1 && time() > strtotime('+5 days',$createtime))
         {
             $current_video_url = '';
         }
