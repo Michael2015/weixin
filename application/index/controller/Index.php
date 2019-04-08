@@ -20,7 +20,10 @@ class Index extends Frontend
 
     public function index()
     {
-        $is_level = $this->user['level'];
+        //是否是会员
+        $is_level = $this->user['gender'];
+        //会员到期日期
+        $birthday = $this->user['birthday'];
         $createtime = $this->user['createtime'];
 
         $video_id = input('video_id',1);
@@ -30,14 +33,23 @@ class Index extends Frontend
         $id = $current_video['id'];
 
         $current_video_url = $current_video['url'];
-        if($is_level == 1 && time() > strtotime('+5 days',$createtime))
+        $msg = '';
+        //体验日期是否已经过
+        if($is_level == 0 && time() > strtotime('+5 days',$createtime))
         {
+            $msg = '尊敬的'.$this->auth->username.'用户，您的观看体验期已过，如继续收看，如需开通会员请添加客服微信：shan47636';
             $current_video_url = '';
         }
-        $current_video_name = $current_video['name'];
+        //会员日期是否过
+        if($is_level == 1 && time() > strtotime($birthday))
+        {
+            $msg = '尊敬的'.$this->auth->username.'会员，您会员已过期，如继续收看，如需继续开通会员请添加客服微信：shan47636';
+            $current_video_url = '';
+        }
 
+        $current_video_name = $current_video['name'];
         $this->assign('user_id',$this->auth->id);
-        $this->assign('username',$this->auth->username);
+        $this->assign('msg',$msg);
         $this->assign('current_id',$video_id);
         $this->assign('current_video_url',$current_video_url);
         $this->assign('current_video_name',$current_video_name);
