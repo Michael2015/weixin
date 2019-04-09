@@ -69,7 +69,7 @@ class Service
                     }
                     else
                     {
-                        $assitor->deadline = $assitor->deadline + 86400;
+                        $assitor->deadline = $deadline + 86400;
                     }
                     $assitor->save();
                 }
