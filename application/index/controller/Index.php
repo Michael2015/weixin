@@ -62,10 +62,10 @@ class Index extends Frontend
                 $left_days = ceil((strtotime($birthday) - time()) / 86400);
             }
         }
-        $wechat_config_obj = new  Jssdk('wx6d3739bbbe9cf3f9','461e7aff47752e5b0bcbcc429c5ccc0a');
+        //$wechat_config_obj = new  Jssdk('wx6d3739bbbe9cf3f9','461e7aff47752e5b0bcbcc429c5ccc0a');
 
         $current_video_name = $current_video['name'];
-        $this->assign('signPackage',$wechat_config_obj->getSignPackage());
+       // $this->assign('signPackage',$wechat_config_obj->getSignPackage());
         $this->assign('user_id',$this->auth->id);
         $this->assign('left_days',$left_days);
         $this->assign('msg',$msg);
