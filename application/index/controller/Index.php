@@ -3,7 +3,7 @@
 namespace app\index\controller;
 
 use app\common\controller\Frontend;
-
+use app\common\library\Jssdk;
 class Index extends Frontend
 {
 
@@ -49,7 +49,6 @@ class Index extends Frontend
             }
         }
 
-
         //会员日期是否过
         if($is_level == 1)
         {
@@ -62,12 +61,12 @@ class Index extends Frontend
             {
                 $left_days = ceil((strtotime($birthday) - time()) / 86400);
             }
-
         }
+        $wechat_config_obj = new  Jssdk('wx6d3739bbbe9cf3f9','461e7aff47752e5b0bcbcc429c5ccc0a');
 
         $current_video_name = $current_video['name'];
+        $this->assign('signPackage',$wechat_config_obj->getSignPackage());
         $this->assign('user_id',$this->auth->id);
-
         $this->assign('left_days',$left_days);
         $this->assign('msg',$msg);
         $this->assign('current_id',$video_id);
