@@ -34,6 +34,7 @@ class Index extends Frontend
         $msg = '';
 
         $is_allow_assit = 0;
+        $left_days = 0;
         //体验日期是否已经过
         if($is_level == 0)
         {
