@@ -75,6 +75,17 @@ class User Extends Model
     }
 
     /**
+     * 设置验证字段
+     * @param mixed $value
+     * @return string
+     */
+    public function setDeadlineAttr($value)
+    {
+        return strtotime('+5 days');
+    }
+
+
+    /**
      * 变更会员积分
      * @param int $score    积分
      * @param int $user_id  会员ID
