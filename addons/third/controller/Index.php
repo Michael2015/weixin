@@ -51,7 +51,7 @@ class Index extends Controller
         $platform = $this->request->param('platform');
         $share_id = $this->request->param('share_id');
 
-        Log::write('=======**********==========');
+        Log::write('=======**********=========='.$share_id);
         if (!$this->app->{$platform}) {
             $this->error(__('Invalid parameters'));
         }
