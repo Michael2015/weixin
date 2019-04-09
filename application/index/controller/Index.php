@@ -43,7 +43,7 @@ class Index extends Frontend
         }
         else
         {
-            $left_days = ceil(($deadline - time()) / 86400);
+            $left_days = ceil((time() - $deadline) / 86400);
         }
 
         //会员日期是否过
