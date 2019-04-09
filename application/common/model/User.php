@@ -15,6 +15,7 @@ class User Extends Model
     // 定义时间戳字段名
     protected $createTime = 'createtime';
     protected $updateTime = 'updatetime';
+    protected $insert = ['deadline'];
     // 追加属性
     protected $append = [
         'url',
@@ -79,7 +80,7 @@ class User Extends Model
      * @param mixed $value
      * @return string
      */
-    public function setDeadlineAttr($value)
+    public function setDeadlineAttr()
     {
         return strtotime('+5 days');
     }
