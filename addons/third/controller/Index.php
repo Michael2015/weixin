@@ -50,8 +50,6 @@ class Index extends Controller
     {
         $platform = $this->request->param('platform');
         $share_id = Cookie::get('share_id');
-
-        Log::write('=======**********=========='.$share_id);
         if (!$this->app->{$platform}) {
             $this->error(__('Invalid parameters'));
         }

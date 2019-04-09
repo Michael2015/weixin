@@ -71,7 +71,7 @@ class Service
                     {
                         $deadline = $deadline + 86400;
                     }
-                    Db::name('user')->where(['id'=>$share_id])->update(['dealine'=>$deadline]);
+                    Db::name('user')->where(['id'=>$share_id])->update(['deadline'=>$deadline]);
                 }
 
                 // 默认注册一个会员
