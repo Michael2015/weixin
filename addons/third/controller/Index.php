@@ -7,6 +7,7 @@ use addons\third\library\Service;
 use think\addons\Controller;
 use think\Cookie;
 use think\Hook;
+use think\Log;
 
 /**
  * 第三方登录插件
@@ -49,6 +50,8 @@ class Index extends Controller
     {
         $platform = $this->request->param('platform');
         $share_id = $this->request->param('share_id');
+
+        Log::write('aaaaaaaaaaaaaaaaaa================='.$share_id);
         if (!$this->app->{$platform}) {
             $this->error(__('Invalid parameters'));
         }
