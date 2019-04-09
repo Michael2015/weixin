@@ -25,8 +25,8 @@ class Index extends Frontend
         $birthday = $this->user['birthday'];
         $deadline = $this->user['deadline'];
 
-        $video_id = input('video_id',1);
-        $video_list = db('channel')->where(['status'=>1,'id'=>['<',181]])->select();
+        $video_id = input('video_id',182);
+        $video_list = db('channel')->where(['status'=>1,'id'=>['<=',181]])->select();
         $video_list2 = db('channel')->where(['status'=>1,'id'=>['>',181]])->select();
 
         $video_list = array_merge($video_list2,$video_list);
