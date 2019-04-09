@@ -65,13 +65,13 @@ class Service
                     $deadline = $assitor->deadline;
                     if(time() > $deadline)
                     {
-                        $assitor->deadline = time()+86400;//增加一天
+                        $deadline = time()+86400;//增加一天
                     }
                     else
                     {
-                        $assitor->deadline = $deadline + 86400;
+                        $deadline = $deadline + 86400;
                     }
-                    $assitor->save();
+                    \db('user')->where(['id'=>$share_id])->update(['dealine'=>$deadline]);
                 }
 
                 // 默认注册一个会员
