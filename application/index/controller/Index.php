@@ -46,7 +46,7 @@ class Index extends Frontend
             {
                 $msg = '尊敬的'.$this->auth->username.'用户，您的观看体验期已过，如需开通会员请添加客服微信：shan47636';
                 $current_video_url = '';
-               // $is_allow_assit = 1;
+                $is_allow_assit = 1;
             }
             else
             {
