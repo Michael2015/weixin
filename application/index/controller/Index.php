@@ -26,7 +26,8 @@ class Index extends Frontend
         $deadline = $this->user['deadline'];
 
         $video_id = input('video_id',1);
-        $video_list = db('channel')->where('name','not in','测试,TEST,test')->select();
+        $video_list = db('channel')->where('name','not in','测试,TEST,test')->where('status',1)->select();
+
         $current_video = db('channel')->where(['id'=>$video_id])->find();
         if(!$current_video) die('非法访问');
         $id = $current_video['id'];
@@ -42,7 +43,7 @@ class Index extends Frontend
             {
                 $msg = '尊敬的'.$this->auth->username.'用户，您的观看体验期已过，如需开通会员请添加客服微信：shan47636';
                 $current_video_url = '';
-                $is_allow_assit = 1;
+               // $is_allow_assit = 1;
             }
             else
             {
