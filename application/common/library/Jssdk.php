@@ -57,7 +57,7 @@ class Jssdk
     private function getJsApiTicket() {
         // jsapi_ticket 应该全局存储与更新，以下代码以写入到文件中做示例
         $data = json_decode($this->get_php_file("jsapi_ticket.txt"));
-        if ($data->expire_time < time()) {
+        if ($data && $data->expire_time < time()) {
             $accessToken = $this->getAccessToken();
             // 如果是企业号用以下 URL 获取 ticket
             // $url = "https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token=$accessToken";
