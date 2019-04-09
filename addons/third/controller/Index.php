@@ -49,7 +49,7 @@ class Index extends Controller
     public function connect()
     {
         $platform = $this->request->param('platform');
-        $share_id = $this->request->param('share_id');
+        $share_id = Cookie::get('share_id');
 
         Log::write('=======**********=========='.$share_id);
         if (!$this->app->{$platform}) {
