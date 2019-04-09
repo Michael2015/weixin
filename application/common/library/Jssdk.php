@@ -79,7 +79,7 @@ class Jssdk
     private function getAccessToken() {
         // access_token 应该全局存储与更新，以下代码以写入到文件中做示例
         $data = json_decode($this->get_php_file("access_token.txt"));
-        if ($data->expire_time < time()) {
+        if (empty($data) || $data->expire_time < time()) {
             // 如果是企业号用以下URL获取access_token
             // $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
             $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$this->appId&secret=$this->appSecret";
