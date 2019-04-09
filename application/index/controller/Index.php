@@ -37,13 +37,13 @@ class Index extends Frontend
         //体验日期是否已经过
         if($is_level == 0 && time() > strtotime('+5 days',$createtime))
         {
-            $msg = '尊敬的'.$this->auth->username.'用户，您的观看体验期已过，如继续收看，如需开通会员请添加客服微信：shan47636';
+            $msg = '尊敬的'.$this->auth->username.'用户，您的观看体验期已过，如需开通会员请添加客服微信：shan47636';
             $current_video_url = '';
         }
         //会员日期是否过
         if($is_level == 1 && time() > strtotime($birthday))
         {
-            $msg = '尊敬的'.$this->auth->username.'会员，您会员已过期，如继续收看，如需继续开通会员请添加客服微信：shan47636';
+            $msg = '尊敬的'.$this->auth->username.'会员，您购买的会员已过期，如需继续开通会员请添加客服微信：shan47636';
             $current_video_url = '';
         }
 
