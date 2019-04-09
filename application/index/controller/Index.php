@@ -27,7 +27,7 @@ class Index extends Frontend
         $createtime = $this->user['createtime'];
 
         $video_id = input('video_id',1);
-        $video_list = db('channel')->where('name','<>','测试')->select();
+        $video_list = db('channel')->where('name','not in','测试,TEST,test')->select();
         $current_video = db('channel')->where(['id'=>$video_id])->find();
         if(!$current_video) die('非法访问');
         $id = $current_video['id'];
