@@ -26,7 +26,10 @@ class Index extends Frontend
         $deadline = $this->user['deadline'];
 
         $video_id = input('video_id',1);
-        $video_list = db('channel')->where('name','not in','测试,TEST,test')->where(['status'=>1])->order('id desc')->select();
+        $video_list = db('channel')->where(['status'=>1,'id'=>['<',181]])->select();
+        $video_list2 = db('channel')->where(['status'=>1,'id'=>['>',181]])->select();
+
+        $video_list = array_merge($video_list2,$video_list);
 
         $current_video = db('channel')->where(['id'=>$video_id])->find();
         if(!$current_video) die('非法访问');
