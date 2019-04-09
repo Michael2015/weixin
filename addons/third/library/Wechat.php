@@ -42,9 +42,9 @@ class Wechat
     /**
      * 获取authorize_url
      */
-    public function getAuthorizeUrl()
+    public function getAuthorizeUrl($state)
     {
-        $state = md5(uniqid(rand(), TRUE));
+        //$state = md5(uniqid(rand(), TRUE));
         Session::set('state', $state);
         $queryarr = array(
             "appid"         => $this->config['app_id'],
@@ -97,6 +97,7 @@ class Wechat
                     'openid'        => $openid,
                     'unionid'       => $unionid,
                     'userinfo'      => [],
+                    'share_id'      => $params['state'],
                 ];
                 return $data;
             }

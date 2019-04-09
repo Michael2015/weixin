@@ -42,6 +42,10 @@
             </div>
         </div>
     </div>
+
+    {if condition = "$is_allow_assit eq 1"}
+    <div style="position: fixed;top: 50%;right: 2%;width: 30px;height:30px;background: #000;text-align:center;line-height:30px;color: red;display: inline-block;border-radius: 3em;" onclick="window.location.href='/index/index/assit';">赚</div>
+    {/if}
     <div class="footer">
         <div class="fleft">
             <p>温馨提示：直播资源全部来源于网络，如有侵权，请联系删除！ </p>
@@ -55,8 +59,6 @@
         </div>
     </div>
 </div>
-<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-
 <script>
     var _hmt = _hmt || [];
     (function() {

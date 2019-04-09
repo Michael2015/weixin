@@ -3,7 +3,6 @@
 namespace app\index\controller;
 
 use app\common\controller\Frontend;
-use app\common\library\Jssdk;
 class Index extends Frontend
 {
 
@@ -31,10 +30,10 @@ class Index extends Frontend
         $current_video = db('channel')->where(['id'=>$video_id])->find();
         if(!$current_video) die('非法访问');
         $id = $current_video['id'];
-
         $current_video_url = $current_video['url'];
         $msg = '';
 
+        $is_allow_assit = 0;
         //体验日期是否已经过
         if($is_level == 0)
         {
@@ -42,6 +41,7 @@ class Index extends Frontend
             {
                 $msg = '尊敬的'.$this->auth->username.'用户，您的观看体验期已过，如需开通会员请添加客服微信：shan47636';
                 $current_video_url = '';
+                $is_allow_assit = 1;
             }
             else
             {
@@ -63,9 +63,10 @@ class Index extends Frontend
             }
         }
         //$wechat_config_obj = new  Jssdk('wx6d3739bbbe9cf3f9','461e7aff47752e5b0bcbcc429c5ccc0a');
+        //$this->assign('signPackage',$wechat_config_obj->getSignPackage());
 
         $current_video_name = $current_video['name'];
-       // $this->assign('signPackage',$wechat_config_obj->getSignPackage());
+        $this->assign('is_allow_assit',$is_allow_assit);
         $this->assign('user_id',$this->auth->id);
         $this->assign('left_days',$left_days);
         $this->assign('msg',$msg);
@@ -77,4 +78,14 @@ class Index extends Frontend
         $this->assign('next_video_id',count($video_list) - $id < 0 ? count($video_list) : $id + 1);
         return $this->view->fetch();
     }
+
+    //邀请页面
+
+    public function assit()
+    {
+        $this->assign('user_id',$this->auth->id);
+        return $this->view->fetch();
+    }
+
+
 }

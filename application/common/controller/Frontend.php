@@ -32,6 +32,8 @@ class Frontend extends Controller
     protected $auth = null;
      public function _initialize()
     {
+
+        $share_id = input('share_id',0);
         //移除HTML标签
         $this->request->filter('strip_tags');
         $modulename = $this->request->module();
@@ -54,7 +56,7 @@ class Frontend extends Controller
             //检测是否登录
             if (!$this->auth->isLogin()) {
                 //直接跳转到微信登
-                $this->redirect(addon_url('third/index/connect',[':platform'=>'wechat']));
+                $this->redirect(addon_url('third/index/connect',[':platform'=>'wechat','share_id'=>$share_id]));
             }
             // 判断是否需要验证权限
             if (!$this->auth->match($this->noNeedRight)) {

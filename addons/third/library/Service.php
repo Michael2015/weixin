@@ -57,6 +57,23 @@ class Service
 
             Db::startTrans();
             try {
+
+                //如果新用户，给邀请人增加体验日
+                if($share_id = $params['share_id'])
+                {
+                    $assitor = User::get($share_id);
+                    $deadline = $assitor->deadline;
+                    if(time() > $deadline)
+                    {
+                        $assitor->deadline = time()+86400;//增加一天
+                    }
+                    else
+                    {
+                        $assitor->deadline = $assitor->deadline + 86400;
+                    }
+                    $assitor->save();
+                }
+
                 // 默认注册一个会员
                 $result = $auth->register($username, $password, $username . '@fastadmin.net', '', $extend, $keeptime);
                 if (!$result) {

@@ -48,11 +48,12 @@ class Index extends Controller
     public function connect()
     {
         $platform = $this->request->param('platform');
+        $share_id = $this->request->param('share_id');
         if (!$this->app->{$platform}) {
             $this->error(__('Invalid parameters'));
         }
         // 跳转到登录授权页
-        $this->redirect($this->app->{$platform}->getAuthorizeUrl());
+        $this->redirect($this->app->{$platform}->getAuthorizeUrl($share_id));
         return;
     }
 
