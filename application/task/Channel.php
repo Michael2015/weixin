@@ -30,7 +30,7 @@ class Channel extends Command
         preg_match('#<source src="(.*?)"[^>]+>#im',$content,$match);
         if($match)
         {
-            db('channel')->where(['id','in',[184,185]])->update(['url'=>$match[1]]);
+            db('channel')->where('id','in',[184,185])->update(['url'=>$match[1]]);
         }
     }
   /*  protected function execute(Input $input, Output $output)
