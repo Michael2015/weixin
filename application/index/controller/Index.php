@@ -42,11 +42,11 @@ class Index extends Frontend
         //体验日期是否已经过
         if($is_level == 0)
         {
+            $is_allow_assit = 1;
             if(time() > $deadline)
             {
                 $msg = '尊敬的'.$this->auth->username.'用户，您的观看体验期已过，如需开通会员请添加客服微信：shan47636';
                 $current_video_url = '';
-                $is_allow_assit = 1;
             }
             else
             {
