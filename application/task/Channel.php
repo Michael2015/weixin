@@ -12,7 +12,28 @@ class Channel extends Command
     {
         $this->setName('channel')->setDescription('Here is the remark ');
     }
+
     protected function execute(Input $input, Output $output)
+    {
+        $curl = curl_init();
+        //设置抓取的url
+        curl_setopt($curl, CURLOPT_URL, 'http://news.tvb.com/live/');
+        //设置头文件的信息作为数据流输出
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+        //设置获取的信息以文件流的形式返回，而不是直接输出。
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        //执行命令
+        $content = curl_exec($curl);
+        //关闭URL请求
+        curl_close($curl);
+
+        preg_match('#<source src="(.*?)"[^>]+>#im',$content,$match);
+        if($match)
+        {
+            db('channel')->where(['id','in',[184,185]])->update(['url'=>$match[1]]);
+        }
+    }
+  /*  protected function execute(Input $input, Output $output)
     {
         //初始化
         $curl = curl_init();
@@ -49,6 +70,6 @@ class Channel extends Command
                 }
             }
         }
-    }
+    }*/
 
 }
