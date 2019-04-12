@@ -22,7 +22,8 @@
         <div class="about_box">
             <div class="txt">
                 <div style="position: relative;">
-                    <video  src="{$current_video_url}" width="100%"  autoplay height="auto" controls="" x5-playsinline="" playsinline -webkit-playsinline preload="auto"></video>
+                   <!-- <video  src="{$current_video_url}" width="100%"  autoplay height="auto" controls="" x5-playsinline="" playsinline -webkit-playsinline preload="auto"></video>-->
+                    <div class="video" style="width: 100%;height: auto;"></div>
                     <div style="position: absolute;bottom: 12px;right: 0;padding: 5px 8px;background: #555;color: white; width: 20%;text-align: center;z-index: 9999;">{$current_video_name}</div>
                 </div>
             </div>
@@ -58,6 +59,17 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/assets/js/ckplayer.min.js"></script>
+<script type="text/javascript">
+    var videoObject = {
+        container: '.video',//“#”代表容器的ID，“.”或“”代表容器的class
+        variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+        autoplay:true,//自动播放
+        live:true,
+        video:'{$current_video_url}'//视频地址
+    };
+    var player=new ckplayer(videoObject);
+</script>
 <script>
     var _hmt = _hmt || [];
     (function() {
