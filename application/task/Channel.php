@@ -35,6 +35,7 @@ class Channel extends Command
         }
         Log::write('测试时间:'.date('Y-m-d H:i:s'));
 
+
        /* $cookie = Curl2::curl_request('http://wx.ottcom.cn/login/mlogin',['uname'=>'18928221189','upass'=>'111111'],0,1);
 
         //j2/j2备用/翡翠台（备用）/有线新闻
