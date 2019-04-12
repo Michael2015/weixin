@@ -22,7 +22,7 @@
         <div class="about_box">
             <div class="txt">
                 <div style="position: relative;">
-                    <video  src="{$current_video_url}" width="100%"  autoplay height="280px" controls="" x5-playsinline="" playsinline="" webkit-playsinline="" preload="auto"></video>
+                    <video  src="{$current_video_url}" width="100%"  autoplay height="280px" controls="" x5-playsinline="" playsinline -webkit-playsinline preload="auto"></video>
                     <div style="position: absolute;bottom: 12px;right: 0;padding: 5px 8px;background: #555;color: white; width: 20%;text-align: center;z-index: 9999;">{$current_video_name}</div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
     </div>
 
     {if condition = "$is_allow_assit eq 1"}
-    <div style="position: fixed;top: 50%;right: 2%;width: 50px;height:50px;background: #000;text-align:center;line-height:50px;color: red;display: inline-block;border-radius: 3em;font-size: 2em;" onclick="window.location.href='/index/index/assit';">赚</div>
+    <div style="position: fixed;top: 50%;right: 2%;width: 50px;height:50px;background: #000;text-align:center;line-height:50px;color: red;display: inline-block;border-radius: 3em;font-size: 2em;z-index: 9999;" onclick="window.location.href='/index/index/assit';">赚</div>
     {/if}
     <div class="footer">
         <div class="fleft">
