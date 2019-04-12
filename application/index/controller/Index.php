@@ -6,7 +6,7 @@ use app\common\controller\Frontend;
 class Index extends Frontend
 {
 
-    protected $noNeedLogin = '*';
+    protected $noNeedLogin = '';
     protected $noNeedRight = '*';
     private $user;
 
