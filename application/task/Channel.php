@@ -5,6 +5,7 @@ use app\common\library\Curl2;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
+use think\Log;
 
 class Channel extends Command
 {
@@ -32,8 +33,9 @@ class Channel extends Command
         {
             db('channel')->where('id','in',[186,193])->update(['url'=>$match[1]]);
         }
+        Log::write('测试时间:'.date('Y-m-d H:i:s'));
 
-        $cookie = Curl2::curl_request('http://wx.ottcom.cn/login/mlogin',['uname'=>'18928221189','upass'=>'111111'],0,1);
+       /* $cookie = Curl2::curl_request('http://wx.ottcom.cn/login/mlogin',['uname'=>'18928221189','upass'=>'111111'],0,1);
 
         //j2/j2备用/翡翠台（备用）/有线新闻
         $video_ids = [184=>3590,185=>3344,183=>3574,200=>3586];
@@ -47,7 +49,7 @@ class Channel extends Command
             //$video_name = trim($match3[1]);
             db('channel')->where(['id'=>$key])->update(['url'=>$video_url]);
 
-        }
+        }*/
     }
     /*  protected function execute(Input $input, Output $output)
       {
