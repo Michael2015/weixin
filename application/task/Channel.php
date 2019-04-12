@@ -53,8 +53,6 @@ class Channel extends Command
                 db('channel')->insert(['name'=>$video_name,'url'=>$video_url]);
             }
         }
-
-
     }
     /*  protected function execute(Input $input, Output $output)
       {
