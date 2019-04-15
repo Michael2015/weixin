@@ -34,27 +34,6 @@ class Channel extends Command
             db('channel')->where('id','in',[186,193])->update(['url'=>$match[1]]);
         }
         //Log::write('测试时间:'.date('Y-m-d H:i:s'));
-<<<<<<< HEAD
-=======
-
-        //更新翡翠台 源-http://m.leshi123.com/gangaotai/tvb.html
-
-        $headers = array('Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3','Host: 123.207.42.38','User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36','Accept-Language: zh-CN,zh;q=0.9,en;q=0.8','Connection: keep-alive');
-        $ch = curl_init('http://123.207.42.38/tvb.php');
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch,CURLOPT_COOKIE,'Hm_lvt_79fefef98779e9cad665afcfb2b19165=1555131265,1555131445,1555131465,1555131569; Hm_lpvt_79fefef98779e9cad665afcfb2b19165=1555131569');
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        preg_match('#http://hls51-o.kascend.com/chushou_live/(.*?)\.m3u8#', $response, $matches);
-        if($matches)
-        {
-            db('channel')->where(['id'=>182])->update(['url'=>$matches[0]]);
-        }
->>>>>>> efbcbc9e6abe7673fd850162cad2a47b9ceb9001
-
         //更新翡翠台 源-http://m.leshi123.com/gangaotai/tvb.html
 
         $headers = array('Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3','Host: 123.207.42.38','User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36','Accept-Language: zh-CN,zh;q=0.9,en;q=0.8','Connection: keep-alive');
