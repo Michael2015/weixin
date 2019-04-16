@@ -16,7 +16,7 @@ class Channel extends Command
 
     protected function execute(Input $input, Output $output)
     {
-        $curl = curl_init();
+       /* $curl = curl_init();
         //设置抓取的url
         curl_setopt($curl, CURLOPT_URL, 'http://news.tvb.com/live/');
         //设置头文件的信息作为数据流输出
@@ -32,7 +32,7 @@ class Channel extends Command
         if($match)
         {
             db('channel')->where('id','in',[186,193])->update(['url'=>$match[1]]);
-        }
+        }*/
         //Log::write('测试时间:'.date('Y-m-d H:i:s'));
         //更新翡翠台 源-http://m.leshi123.com/gangaotai/tvb.html
 
