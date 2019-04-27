@@ -16,22 +16,31 @@ class Channel extends Command
 
     protected function execute(Input $input, Output $output)
     {
-        $curl = curl_init('http://news.tvb.com/live/inews');
-        //设置头文件的信息作为数据流输出
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-        //设置获取的信息以文件流的形式返回，而不是直接输出。
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl,CURLOPT_COOKIE,'Hm_lvt_79fefef98779e9cad665afcfb2b19165=1555131265,1555131445,1555131465,1555131569; Hm_lpvt_79fefef98779e9cad665afcfb2b19165=1555131569');
-        //执行命令
-        $content = curl_exec($curl);
-        //关闭URL请求
-        curl_close($curl);
 
-        preg_match('#<source src="(.*?)"[^>]+>#im',$content,$match);
-        if($match)
+        $channel = [186=>'http://news.tvb.com/live/inews',189=>'http://news.tvb.com/live/j5_ch85'];
+
+        foreach ($channel as $key=>$url)
         {
-            db('channel')->where('id','in',[186])->update(['url'=>$match[1]]);
+            /* ---- 无线新闻 ---  */ /* ---- 无线财经 ---  */
+            $curl = curl_init($url);
+            //设置头文件的信息作为数据流输出
+            curl_setopt($curl, CURLOPT_HEADER, 0);
+            //设置获取的信息以文件流的形式返回，而不是直接输出。
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($curl,CURLOPT_COOKIE,'Hm_lvt_79fefef98779e9cad665afcfb2b19165=1555131265,1555131445,1555131465,1555131569; Hm_lpvt_79fefef98779e9cad665afcfb2b19165=1555131569');
+            //执行命令
+            $content = curl_exec($curl);
+            //关闭URL请求
+            curl_close($curl);
+
+            preg_match('#<source src="(.*?)"[^>]+>#im',$content,$match);
+            if($match)
+            {
+                db('channel')->where('id','in',[$key])->update(['url'=>$match[1]]);
+            }
         }
+
+
         //Log::write('测试时间:'.date('Y-m-d H:i:s'));
         //更新翡翠台 源-http://m.leshi123.com/gangaotai/tvb.html
 
