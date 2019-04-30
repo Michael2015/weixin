@@ -2,9 +2,6 @@
 
 namespace app\common\library;
 
-use think\Hook;
-
-
 class Curl2
 {
     public static function curl_request($url,$post='',$cookie='', $returnCookie=0)
