@@ -39,7 +39,7 @@ return array (
     'value' => 
     array (
       'app_id' => 'wx6d3739bbbe9cf3f9',
-      'app_secret' => '461e7aff47752e5b0bcbcc429c5ccc0a',
+      'app_secret' => '9f70db1560fae84feb11e6baf076a04d',
       'scope' => 'snsapi_base',
     ),
     'rule' => 'required',
