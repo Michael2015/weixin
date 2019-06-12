@@ -24,7 +24,10 @@ class Index extends Frontend
         //会员到期日期
         $birthday = $this->user['birthday'];
         $deadline = $this->user['deadline'];
-        $video_id = 1;
+
+        $video_id = input('video_id',1);
+        $video_list = db('channel')->where(['status'=>1])->select();
+
         $current_video = db('channel')->where(['id'=>$video_id])->find();
         if(!$current_video) die('非法访问');
         $id = $current_video['id'];
