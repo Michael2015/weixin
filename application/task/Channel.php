@@ -1,11 +1,9 @@
 <?php
 
 namespace app\task;
-use app\common\library\Curl2;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
-use think\Log;
 
 class Channel extends Command
 {
@@ -16,102 +14,45 @@ class Channel extends Command
 
     protected function execute(Input $input, Output $output)
     {
+        db('channel')->delete(true);
+        $url = "http://wintv.ottcom.cn/admin/LiveChannel/ManageList.aspx";
+        $aHeader = ['Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8','Accept-Language: zh-cn'];
+        $curl = curl_init(); // 启动一个CURL会话
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);              // 对认证证书来源的检查
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);              // 从证书中检查SSL加密算法是否存在
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $aHeader);
+        curl_setopt($curl, CURLOPT_USERAGENT, 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.3(0x17000321) NetType/WIFI Language/zh_CN');
+        curl_setopt($curl,CURLOPT_COOKIE,'ASP.NET_SessionId=1g1pxqyvxilagab02ytvvwg1; langid=1');
+        $content = curl_exec($curl);     //返回api的json对象
+        //关闭URL请求
+        curl_close($curl);
+        preg_match_all('#"ChannelName":"(.*?)",#is', $content,$match);
+        preg_match_all('#"UrlList":"(.*?)",#is', $content,$match2);
 
-        $channel = [186=>'http://news.tvb.com/live/inews',189=>'http://news.tvb.com/live/j5_ch85'];
-
-        foreach ($channel as $key=>$url)
+        if(isset($match[1]) && $match[1])
         {
-            /* ---- 无线新闻 ---  */ /* ---- 无线财经 ---  */
-            $curl = curl_init($url);
-            //设置头文件的信息作为数据流输出
-            curl_setopt($curl, CURLOPT_HEADER, 0);
-            //设置获取的信息以文件流的形式返回，而不是直接输出。
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($curl,CURLOPT_COOKIE,'Hm_lvt_79fefef98779e9cad665afcfb2b19165=1555131265,1555131445,1555131465,1555131569; Hm_lpvt_79fefef98779e9cad665afcfb2b19165=1555131569');
-            //执行命令
-            $content = curl_exec($curl);
-            //关闭URL请求
-            curl_close($curl);
-
-            preg_match('#<source src="(.*?)"[^>]+>#im',$content,$match);
-            if($match)
+            $insertData = [];
+            foreach ($match[1] as $channel_key=>$channel_name)
             {
-                db('channel')->where('id','in',[$key])->update(['url'=>$match[1]]);
+                if(strpos($match2[1][$channel_key],'#'))
+                {
+                    $url_arr = explode('#',$match2[1][$channel_key]);
+                    foreach ($url_arr as $url_key=>$channel_url)
+                    {
+                        $insertData[] = ['name'=>$channel_name.'#'.$url_key,'url'=>$channel_url];
+                    }
+                }
+                else
+                {
+                    $insertData[] = ['name'=>$channel_name,'url'=>$match2[1][$channel_key]];
+                }
             }
+            db('channel')->insert($insertData);
         }
-
-
-        //Log::write('测试时间:'.date('Y-m-d H:i:s'));
-        //更新翡翠台 源-http://m.leshi123.com/gangaotai/tvb.html
-
-        $headers = array('Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3','Host: 123.207.42.38','User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36','Accept-Language: zh-CN,zh;q=0.9,en;q=0.8','Connection: keep-alive');
-        $ch = curl_init('http://123.207.42.38/tvb.php');
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch,CURLOPT_COOKIE,'Hm_lvt_79fefef98779e9cad665afcfb2b19165=1555131265,1555131445,1555131465,1555131569; Hm_lpvt_79fefef98779e9cad665afcfb2b19165=1555131569');
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        preg_match('#http://hls51-o.kascend.com/chushou_live/(.*?)\.m3u8#', $response, $matches);
-        if($matches)
-        {
-            db('channel')->where(['id'=>182])->update(['url'=>$matches[0]]);
-        }
-
-        /* $cookie = Curl2::curl_request('http://wx.ottcom.cn/login/mlogin',['uname'=>'18928221189','upass'=>'111111'],0,1);
-
-         //j2/j2备用/翡翠台（备用）/有线新闻
-         $video_ids = [184=>3590,185=>3344,183=>3574,200=>3586];
-
-         foreach ($video_ids as $key=>$video_id)
-         {
-             $video_play = Curl2::curl_request('http://wx.ottcom.cn/news/view/id/'.$video_id,[],$cookie['cookie'],0);
-             preg_match('#<video[\s]+src="(.*?)"#im',$video_play,$match2);
-             $video_url = $match2[1];
-             //preg_match('#<h2[^>]+>(.*?)<\/h2>#is',$video_play,$match3);
-             //$video_name = trim($match3[1]);
-             db('channel')->where(['id'=>$key])->update(['url'=>$video_url]);
-
-         }*/
     }
-    /*  protected function execute(Input $input, Output $output)
-      {
-          //初始化
-          $curl = curl_init();
-          //设置抓取的url
-          curl_setopt($curl, CURLOPT_URL, 'http://wx.ottcom.cn/');
-          //设置头文件的信息作为数据流输出
-          curl_setopt($curl, CURLOPT_HEADER, 1);
-          //设置获取的信息以文件流的形式返回，而不是直接输出。
-          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-          //执行命令
-          $content = curl_exec($curl);
-          //关闭URL请求
-          curl_close($curl);
-          //显示获得的数据
-          preg_match_all('#<a[\s]*href="/news/view/id/(.*?)">#im',$content,$match);
-
-          if($match)
-          {
-              $cookie = Curl2::curl_request('http://wx.ottcom.cn/login/mlogin',['uname'=>'13713018282','upass'=>'aaaaaa'],0,1);
-              foreach ($match[1] as $video_id)
-              {
-                  $video_play = Curl2::curl_request('http://wx.ottcom.cn//news/view/id/'.$video_id,[],$cookie['cookie'],0);
-                  preg_match('#<video[\s]+src="(.*?)"#im',$video_play,$match2);
-                  $video_url = $match2[1];
-                  preg_match('#<h2[^>]+>(.*?)<\/h2>#is',$video_play,$match3);
-                  $video_name = trim($match3[1]);
-                  if(db('channel')->where(['name'=>$video_name])->find())
-                  {
-                      db('channel')->where(['name'=>$video_name])->update(['url'=>$video_url]);
-                  }
-                  else
-                  {
-                      db('channel')->insert(['name'=>$video_name,'url'=>$video_url]);
-                  }
-              }
-          }
-      }*/
 
 }
