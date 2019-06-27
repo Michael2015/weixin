@@ -4,6 +4,7 @@ namespace app\task;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
+use think\Log;
 
 class Channel extends Command
 {
@@ -33,6 +34,8 @@ class Channel extends Command
         preg_match_all('#"ChannelName":"(.*?)",#is', $content,$match);
         preg_match_all('#"UrlList":"(.*?)",#is', $content,$match2);
 
+        Log::write('========11111111'.$match);
+        Log::write('========22222222'.$match2);
         if(isset($match[1]) && $match[1])
         {
             $insertData = [];
