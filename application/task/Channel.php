@@ -52,7 +52,7 @@ class Channel extends Command
                     $insertData[] = ['name'=>$channel_name,'url'=>$match2[1][$channel_key]];
                 }
             }
-            db('channel')->insert($insertData);
+            db('channel')->insertAll($insertData);
         }
     }
 
