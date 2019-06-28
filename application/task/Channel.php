@@ -16,7 +16,7 @@ class Channel extends Command
 
     protected function execute(Input $input, Output $output)
     {
-        Db::execute('truncate table `fa_channel`');
+
         $url = "http://wintv.ottcom.cn/admin/LiveChannel/ManageList.aspx";
         $aHeader = ['Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8','Accept-Language: zh-cn'];
         $curl = curl_init(); // 启动一个CURL会话
@@ -52,6 +52,10 @@ class Channel extends Command
                 {
                     $insertData[] = ['name'=>$channel_name,'url'=>$match2[1][$channel_key]];
                 }
+            }
+            if($insertData)
+            {
+                Db::execute('truncate table `fa_channel`');
             }
             db('channel')->insertAll($insertData);
         }
